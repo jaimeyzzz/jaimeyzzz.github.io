@@ -19,6 +19,7 @@
     <div id="mainDiv">
         <div id="content">
             <div id="code">
+                <!--
                 <span class="comments">/**</span><br />
                 <span class="space"/><span class="comments">* We are both XXX Unversity  business administration and programmers,</span><br />
                 <span class="space"/><span class="comments">* so I write some code to show my love to you.</span><br />
@@ -47,27 +48,26 @@
                 <span class="comments">// After a please sound of accept, we will live happily ever after.</span><br />
                 u.accept(i);<br />
                 i.liveHappilyWith(u);<br />
-            </div>
+            -->
+            </div> 
             <div id="loveHeart">
                 <canvas id="garden"></canvas>
                 <div id="words">
                     <div id="messages">
 <center>
 </center>
-                        girlname, I will have fallen in love with you for
+                        和周小猪已经相爱
                         <div id="elapseClock" style="display:none"></div>
-                        <a href='#' id="accept">click me if accept me</a>
+                        <a href='#' id="accept">	&hearts; </a>
                     </div>
                     <div id="loveu">
-                        Love u forever and ever.<br/>
-                        <div class="signature">- boyname</div>
+                        <br/>
+                        <div class="signature"> LJM </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div id="copyright">
-            程序改编: <a href="http://www.crazyiter.com/">疯狂的IT人</a><br />
-        </div>
+
     </div>
     <script type="text/javascript">
         var offsetX = $("#loveHeart").width() / 2;
@@ -86,12 +86,12 @@
             setTimeout(function () {
                 adjustWordsPosition();
                 startHeartAnimation();
-            }, 10000);
+            }, 1000);
             
             $("#accept").click(function(){
                 $(this).hide();
                 $("#elapseClock").show();
-                var together = new Date();
+                var together = new Date(2020,9,2);
                 timeElapse(together);
                 setInterval(function () {
                     timeElapse(together);
