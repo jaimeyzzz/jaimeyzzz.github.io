@@ -11,7 +11,7 @@ title:            Jia-Ming Lu
 tagline:          'Personal Page'
 description:      'Personal page.'
 url:              http://jaimeyzzz.github.io/
-baseurl:          //
+baseurl:          /
 
 author:
   name:           'Jia-Ming Lu'
