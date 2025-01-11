@@ -4,8 +4,6 @@ layout: homepage
 
 ## About Me
 
-Bytedance.
-
 Researcher at miHoYo.
 
 Ph.D. Tsinghua University.
