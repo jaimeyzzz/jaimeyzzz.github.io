@@ -3,7 +3,7 @@ layout: homepage
 ---
 
 ## About Me
-I am Jia-Ming Lu, a researcher in computer graphics. Born in 1995, I received my Bachelor's degree in 2016 and Ph.D. in 2021 from Tsinghua University under the supervision of Professor Shi-Min Hu, focusing on physical animation and simulation techniques. From 2021 to 2024, I served as the CFX Technical Lead and Cloth Simulation Topic Owner at miHoYo.
+I am Jia-Ming Lu, a researcher in computer graphics. Born in 1995, I received my Bachelor's degree in 2016 and Ph.D. in 2021 from Tsinghua University under the supervision of Professor Shi-Min Hu, focusing on physical animation and simulation techniques. From 2021 to 2024, I served as the CFX Technical Lead and Cloth Simulation Topic Owner at Anti-Entropy Research Team, miHoYo.
 
 ## Research Interests
 
