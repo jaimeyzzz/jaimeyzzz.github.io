@@ -1,8 +1,16 @@
 main:
 
   - title: Implicit Bonded Discrete Element Method with Manifold Optimization
-    authors: 
+    authors: <strong>Jia-Ming Lu</strong>, Geng-Chen Cao, Chen-Feng Li, Shi-Min Hu
     conference_short: TOG
-    conference: 
-    pdf: 
+    conference: ACM Transactions on Graphics
+    pdf: https://dl.acm.org/doi/10.1145/3711852
+    image: /assets/image/tog_ibdem.jpg
+
+  - title: Simulating Fractures with Bonded Discrete Element Method
+    authors: <strong>Jia-Ming Lu</strong>, Chen-Feng Li, Geng-Chen Cao, Shi-Min Hu
+    conference_short: TVCG
+    conference: IEEE Transactions on Visualization and Computer Graphics
+    pdf: https://ieeexplore.ieee.org/document/9523751
+    image: /assets/image/tvcg_bdem.jpg
 
