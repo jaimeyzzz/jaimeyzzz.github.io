@@ -11,9 +11,8 @@ I am Jia-Ming Lu, a researcher in computer graphics.
 I’m deeply dedicated to unlocking the full potential of human creativity. What drives me is a profound passion for delving into the underlying, fundamental relationships between things.
 
 #### Digital Human *Lumi*
-
-- [yoyo_Lumi CFX](https://www.bilibili.com/video/BV1GH4y1Z7yS)
-- [yoyo_Lumi Live Show](https://www.bilibili.com/video/BV1LV4y1b7ba)
+- <a href="https://www.bilibili.com/video/BV1GH4y1Z7yS" target="_blank">yoyo_Lumi CFX</a>
+- <a href="https://www.bilibili.com/video/BV1LV4y1b7ba" target="_blank">yoyo_Lumi Live Show</a>
 
 ## Research Interests
 
