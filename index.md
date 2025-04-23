@@ -21,8 +21,9 @@ I’m deeply dedicated to unlocking the full potential of human creativity. What
 
 ## News
 
-- **[Dec. 2024]** Our paper is accepted to TOG.
-- **[Feb. 2020]** Our paper is accepted to TVCG!
+- **[Apr. 2025]** One paper is accepted to TOG! I will release the paper soon.
+- **[Dec. 2024]** One paper is accepted to TOG!
+- **[Feb. 2020]** One paper is accepted to TVCG!
 
 {% include_relative _includes/publications.md %}
 
