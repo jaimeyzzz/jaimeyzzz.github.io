@@ -5,6 +5,7 @@ main:
     conference_short: TOG
     conference: ACM Transactions on Graphics, 2025
     pdf: coming soon
+    image: /assets/img/tog_rid.jpg
     
   - title: Implicit Bonded Discrete Element Method with Manifold Optimization
     authors: <strong>Jia-Ming Lu</strong>, Geng-Chen Cao, Chen-Feng Li, Shi-Min Hu
