@@ -33,24 +33,28 @@ main:
     conference_short: TIP
     conference: IEEE Transactions on Image Processing, 2019
     pdf: https://cg.cs.tsinghua.edu.cn/papers/TIP-2020-video-metric.pdf
+    image: /assets/img/tip_videometric.jpg
 
   - title: A Comparative Study of Algorithms for Realtime Panoramic Video Blending
     authors: Zhe Zhu, <strong>Jiaming Lu</strong>, Minxuan Wang, Songhai Zhang, Ralph Martin, Hantao Liu, Shi-Min Hu. 
     conference_short: TIP
     conference: IEEE Transactions on Image Processing, 2018
     pdf: https://cg.cs.tsinghua.edu.cn/papers/TIP-2018-blending.pdf
+    image: /assets/img/tip_blending.jpg
 
   - title: Traffic signal detection and classification in street views using an attention model
     authors: Yifan Lu, <strong>Jiaming Lu</strong>, Songhai Zhang, Peter Hall 
     conference_short: CVM
     conference: Computational Visual Media, 2018
     pdf: https://link.springer.com/article/10.1007/s41095-018-0116-x
+    image: assets/img/cvm_traffic_sign.jpg
 
   - title: An Optimization Approach for Localization Refinement of Candidate Traffic Signs
     authors: Zhe Zhu, <strong>Jiaming Lu</strong>, Ralph R. Martin, Shi-Min Hu. 
     conference_short: TITS
     conference: IEEE Transactions on Intelligent Transportation Systems, 2017 
     pdf: https://cg.cs.tsinghua.edu.cn/papers/TITS-2017-traffic-sign.pdf
+    image: /assets/img/tits_traffic_sign.jpg
 
   - title: Computational Design of Transforming Pop-up Books
     authors: Nan Xiao, Zhe Zhu, Ralph R. Martin, Kun Xu, <strong>Jia-Ming Lu</strong>, and Shi-Min Hu.
