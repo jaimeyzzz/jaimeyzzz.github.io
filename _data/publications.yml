@@ -3,7 +3,7 @@ main:
   - title: Reliable Iterative Dynamics - A Versatile Method for Fast and Robust Simulation
     authors: <strong>Jia-Ming Lu</strong>, Shi-Min Hu
     conference_short: TOG
-    conference: ACM Transactions on Graphics, 2025
+    conference: ACM Transactions on Graphics, 2025 (To be presented at SIGGRAPH Asia 2025)
     pdf: https://dl.acm.org/doi/10.1145/3734518
     image: /assets/img/tog_rid.jpg
     
