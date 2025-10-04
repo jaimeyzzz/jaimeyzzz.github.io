@@ -6,6 +6,7 @@
   <li><a href=""><autocolor>SIGGRAPH North America</autocolor></a></li>
   <li><a href=""><autocolor>SIGGRAPH Asia</autocolor></a></li>
   <li><a href="http://iccvm.org/"><autocolor>International Conference on Computational Visual Media (ICCVM)</autocolor></a></li>
+    <li><a href="https://www.eg.org/"><autocolor>Eurographics</autocolor></a></li>
 </ul>
 
 <h4 style="margin:0 10px 0;">Journal Reviewers</h4>
