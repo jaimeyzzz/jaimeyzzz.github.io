@@ -4,7 +4,8 @@ main:
     authors: <strong>Jia-Ming Lu</strong>, Tai-Ling Yuan, Zhe-Han Mo, Shi-Min Hu
     conference_short: SIGGRAPH Asia
     conference: SIGGRAPH Asia, 2025
-    pdf: https://dl.acm.org/doi/10.1145/3734518
+    code: https://github.com/jaimeyzzz/fgmm
+    pdf: https://dl.acm.org/doi/10.1145/XXXXXXX
     image: /assets/img/siggraph_asia_fgmm.jpg
 
   - title: Reliable Iterative Dynamics - A Versatile Method for Fast and Robust Simulation
