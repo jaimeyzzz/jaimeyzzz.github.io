@@ -3,7 +3,7 @@ main:
   - title: Fast Galerkin Multigrid Method for Unstructured Meshes
     authors: <strong>Jia-Ming Lu</strong>, Tai-Ling Yuan, Zhe-Han Mo, Shi-Min Hu
     conference_short: SIGGRAPH Asia
-    conference: SIGGRAPH Asia, 2025
+    conference: SIGGRAPH Asia Journal Track, 2025
     code: https://github.com/jaimeyzzz/fgmm
     pdf: https://dl.acm.org/doi/10.1145/XXXXXXX
     image: /assets/img/siggraph_asia_fgmm.jpg
