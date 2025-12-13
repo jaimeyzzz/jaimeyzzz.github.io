@@ -17,13 +17,14 @@ I’m deeply dedicated to unlocking the full potential of human creativity. What
 ## Research Interests
 
 - **Computer Graphics:** physically-based simulation, differentiable simulation
-- **Machine Learning:** animation synthesis, animation generation, world model
+- **Machine Learning:** animation generation, world model
 
 ## News
 
+- **[Aug. 2025]** Our work FGMM is accepted to SIGGRAPH Asia 2025 (TOG paper)!
 - **[Apr. 2025]** Our work RID is accepted to TOG!
-- **[Dec. 2024]** One paper is accepted to TOG!
-- **[Feb. 2020]** One paper is accepted to TVCG!
+- **[Dec. 2024]** One work IBDEM accepted to TOG!
+- **[Feb. 2020]** Our work BDEM is accepted to TVCG!
 
 {% include_relative _includes/publications.md %}
 
