@@ -6,17 +6,17 @@ layout: homepage
 <h2 class="section__title" data-num="I">Industry · miHoYo</h2>
 
 <div class="showcase">
-  <figure class="work-figure showcase__main">
+  <a class="work-figure work-figure--link showcase__main" href="https://www.bilibili.com/video/BV1LV4y1b7ba" target="_blank" rel="noopener">
     <div class="fig-num">Fig. 01</div>
     <picture>
-      <source media="(max-width: 720px)" srcset="./assets/img/shenhe-960.jpg">
-      <img src="./assets/img/shenhe.jpg" alt="Shenhe — new outfit promotional art" loading="lazy" decoding="async">
+      <source srcset="./assets/img/lumi-summer.webp" type="image/webp">
+      <img src="./assets/img/lumi-summer.jpg" alt="Lumi — Summer Live Show official artwork, miHoYo" loading="lazy" decoding="async">
     </picture>
     <figcaption>
-      <span><em>Shenhe</em> — 冷花幽露 · character animation</span>
-      <span>Genshin Impact · miHoYo</span>
+      <span><em>Lumi</em> — 夏日时光放映会 · live show</span>
+      <span>▷ bilibili</span>
     </figcaption>
-  </figure>
+  </a>
 
   <div class="showcase__side">
     <a class="work-figure work-figure--link" href="https://www.bilibili.com/video/BV1GH4y1Z7yS" target="_blank" rel="noopener">
@@ -31,17 +31,17 @@ layout: homepage
       </figcaption>
     </a>
 
-    <a class="work-figure work-figure--link" href="https://www.bilibili.com/video/BV1LV4y1b7ba" target="_blank" rel="noopener">
+    <figure class="work-figure">
       <div class="fig-num">Fig. 03</div>
       <picture>
-        <source srcset="./assets/img/lumi-summer.webp" type="image/webp">
-        <img src="./assets/img/lumi-summer.jpg" alt="Lumi — Summer Live Show official artwork, miHoYo" loading="lazy" decoding="async">
+        <source media="(max-width: 720px)" srcset="./assets/img/shenhe-960.jpg">
+        <img src="./assets/img/shenhe.jpg" alt="Shenhe — new outfit promotional art" loading="lazy" decoding="async">
       </picture>
       <figcaption>
-        <span><em>Lumi</em> — 夏日时光放映会 · live show</span>
-        <span>▷ bilibili</span>
+        <span><em>Shenhe</em> — 冷花幽露 · character animation</span>
+        <span>Genshin Impact · miHoYo</span>
       </figcaption>
-    </a>
+    </figure>
   </div>
 </div>
 </section>
