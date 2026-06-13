@@ -3,7 +3,7 @@ layout: homepage
 ---
 
 <section class="section" id="about">
-<h2 class="section__title">About</h2>
+<h2 class="section__title"><span class="section__sigil">§ 01</span>About</h2>
 
 <div class="about">
 <p>I am <strong>Jia-Ming Lu</strong>, a researcher working at the intersection of <strong>physically-based simulation</strong>, <strong>animation</strong>, and <strong>AI for 3D content creation</strong>. I&rsquo;m deeply dedicated to unlocking the full potential of human creativity, driven by a passion for delving into the underlying, fundamental relationships between things.</p>
@@ -31,7 +31,7 @@ layout: homepage
 
 
 <section class="section" id="interests">
-<h2 class="section__title">Research Interests</h2>
+<h2 class="section__title"><span class="section__sigil">§ 02</span>Research Interests</h2>
 
 <div class="tags">
   <span class="tag"><strong>CG</strong> physically-based simulation</span>
@@ -47,7 +47,7 @@ layout: homepage
 
 
 <section class="section" id="lumi">
-<h2 class="section__title">Digital Human · Lumi</h2>
+<h2 class="section__title"><span class="section__sigil">§ 04</span>Digital Human · Lumi</h2>
 
 <div class="lumi">
   <a class="lumi__card" href="https://www.bilibili.com/video/BV1GH4y1Z7yS" target="_blank" rel="noopener">
@@ -75,7 +75,7 @@ layout: homepage
 
 
 <section class="section" id="games">
-<h2 class="section__title">Game Achievements</h2>
+<h2 class="section__title"><span class="section__sigil">§ 07</span>Game Achievements</h2>
 
 <p style="color:var(--text-mute); margin: 0 0 18px; font-size: 14.5px;">Outside of work, I'm a long-time action-game enthusiast. A few personal milestones I'm proud of:</p>
 

@@ -1,5 +1,5 @@
 <section class="section" id="services">
-<h2 class="section__title">Services</h2>
+<h2 class="section__title"><span class="section__sigil">§ 06</span>Services</h2>
 
 <div class="services">
   <div class="services__group">

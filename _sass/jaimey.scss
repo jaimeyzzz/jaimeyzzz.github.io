@@ -21,6 +21,9 @@
   --shadow-1:      0 1px 2px rgba(20,23,26,0.05), 0 1px 3px rgba(20,23,26,0.04);
   --shadow-2:      0 4px 10px rgba(20,23,26,0.06), 0 12px 28px rgba(20,23,26,0.06);
   --hairline:      rgba(20,23,26,0.08);
+  --grid-dot:      rgba(20,23,26,0.06);
+  --mesh-stroke:   rgba(20,23,26,0.30);
+  --mesh-vertex:   rgba(20,23,26,0.55);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -39,6 +42,9 @@
     --shadow-1:      0 1px 2px rgba(0,0,0,0.4), 0 1px 3px rgba(0,0,0,0.3);
     --shadow-2:      0 8px 24px rgba(0,0,0,0.5);
     --hairline:      rgba(255,255,255,0.06);
+    --grid-dot:      rgba(255,255,255,0.05);
+    --mesh-stroke:   rgba(255,255,255,0.20);
+    --mesh-vertex:   rgba(255,255,255,0.55);
   }
 }
 
@@ -55,7 +61,10 @@ html { -webkit-text-size-adjust: 100%; }
 
 body {
   margin: 0;
-  background: var(--bg);
+  background-color: var(--bg);
+  background-image: radial-gradient(circle at 1px 1px, var(--grid-dot) 1px, transparent 0);
+  background-size: 28px 28px;
+  background-attachment: fixed;
   color: var(--text);
   font-family: $font-system;
   font-size: 16px;
@@ -106,12 +115,12 @@ ul, ol { margin: 0 0 1em; padding-left: 1.2em; }
 .prose-narrow { max-width: 720px; }
 
 .section__title {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--accent);
-  margin: 0 0 24px;
+  margin: 0 0 28px;
   display: flex;
   align-items: center;
   gap: 14px;
@@ -121,6 +130,21 @@ ul, ol { margin: 0 0 1em; padding-left: 1.2em; }
   flex: 1;
   height: 1px;
   background: var(--hairline);
+}
+.section__sigil {
+  font-family: $font-mono;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--text-faint);
+  text-transform: none;
+  flex-shrink: 0;
+  /* show a thin connecting dash between sigil and section name */
+  &::after {
+    content: " ──";
+    color: var(--hairline);
+    margin-left: 6px;
+  }
 }
 
 /* ---------- Hero ---------- */
@@ -145,6 +169,27 @@ ul, ol { margin: 0 0 1em; padding-left: 1.2em; }
   border: 2px solid var(--border);
   flex-shrink: 0;
   background: var(--surface-elev);
+}
+
+/* Geometric mesh glyph that sits where an avatar might go */
+.hero__glyph {
+  width: 132px;
+  height: 110px;
+  flex-shrink: 0;
+  color: var(--mesh-stroke);
+  display: block;
+  position: relative;
+}
+.hero__glyph svg { width: 100%; height: 100%; display: block; }
+.hero__glyph::after {
+  content: "MESH · v0";
+  position: absolute;
+  bottom: -14px;
+  left: 0;
+  font-family: $font-mono;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--text-faint);
 }
 
 .hero__name {
@@ -337,6 +382,23 @@ ul, ol { margin: 0 0 1em; padding-left: 1.2em; }
   color: #0b0d10;
 }
 .highlight__body { display: flex; flex-direction: column; gap: 8px; }
+.highlight__figref {
+  font-family: $font-mono;
+  font-size: 11.5px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0;
+}
+.highlight__figref::before {
+  content: "";
+  display: inline-block;
+  width: 8px; height: 8px;
+  background: var(--accent);
+  margin-right: 8px;
+  vertical-align: 1px;
+  opacity: 0.85;
+}
 .highlight__title {
   font-size: 22px;
   font-weight: 600;
