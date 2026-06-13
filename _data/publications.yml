@@ -34,7 +34,7 @@ main:
     conference_short: CGF
     conference: Computer Graphics Forum, 2019
     pdf: https://cg.cs.tsinghua.edu.cn/papers/CGF-2019-fluid.pdf
-    image: /assets/img/cgf_rsc.png
+    image: /assets/img/cgf_rsc.jpg
 
   - title: A Metric for Video Blending Quality Assessment
     authors: Zhe Zhu, Hantao Liu, <strong>Jiaming Lu</strong>, Shi-Min Hu 

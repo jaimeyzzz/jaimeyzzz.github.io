@@ -51,3 +51,5 @@ exclude:
   - LICENSE
   - minimal-light.gemspec
   - html_source_file/
+  - assets/img/fine/
+  - assets/img/_originals_backup/
