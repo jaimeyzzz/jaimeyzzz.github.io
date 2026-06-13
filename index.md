@@ -3,7 +3,7 @@ layout: homepage
 ---
 
 <section class="section section--showcase" id="industry">
-<h2 class="section__title">Industry · miHoYo</h2>
+<h2 class="section__title" data-num="I">Industry · miHoYo</h2>
 
 <div class="showcase">
   <figure class="work-figure showcase__main">
@@ -54,9 +54,9 @@ layout: homepage
 
 
 <section class="section" id="games">
-<h2 class="section__title">Game Achievements</h2>
+<h2 class="section__title" data-num="IV">Off the record</h2>
 
-<p style="color:var(--text-mute); margin: 0 0 18px; font-size: 15px;">Outside of work, I&rsquo;m a long-time action-game enthusiast. A few personal milestones I&rsquo;m proud of.</p>
+<p style="color:var(--text-mute); margin: 0 0 22px; font-size: 17px; font-family: 'Crimson Pro', serif; font-style: italic; max-width: 640px;">Outside of work I&rsquo;m a long-time action-game enthusiast. A few personal milestones I&rsquo;m quietly proud of.</p>
 
 <div class="games">
   <div class="game">

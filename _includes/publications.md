@@ -1,5 +1,5 @@
 <section class="section" id="publications">
-<h2 class="section__title">Publications</h2>
+<h2 class="section__title" data-num="II">Publications</h2>
 
 <ol class="pubs">
 {% for p in site.data.publications.main %}
