@@ -97,6 +97,34 @@ ul, ol { margin: 0 0 1em; padding-left: 1.2em; }
 
 ::selection { background: var(--accent-soft); color: var(--text); }
 
+/* Quiet scrollbar */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 999px;
+  border: 2px solid var(--bg);
+}
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+/* Gentle rise-in on first load so the page feels composed, not built */
+@keyframes hero-rise {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero      { animation: hero-rise 0.6s 0.05s ease both; }
+.hero-cover{ animation: hero-rise 0.7s 0.20s ease both; }
+.hero-after{ animation: hero-rise 0.6s 0.35s ease both; }
+@media (prefers-reduced-motion: reduce) {
+  .hero, .hero-cover, .hero-after { animation: none; }
+  .hero-cover__img,
+  .highlight__media img, .pub__media img { transition: none !important; }
+}
+
 /* ---------- Layout container ---------- */
 
 .wrap {
@@ -141,17 +169,17 @@ ul, ol { margin: 0 0 1em; padding-left: 1.2em; }
 
 /* ---------- Hero ---------- */
 
-/* Quiet hero: a single line of name, then a few small things */
+/* Editorial hero: compact text block above a full-bleed cover image */
 .hero {
-  padding: 96px 0 24px;
+  padding: 88px 0 0;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 14px;
 }
 
 .hero__name {
   font-family: $font-system;
-  font-size: 44px;
+  font-size: 38px;
   font-weight: 700;
   letter-spacing: -0.025em;
   line-height: 1.05;
@@ -161,26 +189,80 @@ ul, ol { margin: 0 0 1em; padding-left: 1.2em; }
 
 .hero__role {
   color: var(--text-mute);
-  font-size: 14px;
+  font-size: 13px;
   font-family: $font-mono;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   margin: 0;
 }
 
 .hero__tagline {
   font-family: $font-serif;
-  font-size: 22px;
+  font-size: 21px;
   line-height: 1.45;
   font-weight: 400;
+  font-style: italic;
   color: var(--text);
-  margin: 8px 0 0;
-  max-width: 700px;
+  margin: 4px 0 0;
+  max-width: 720px;
 }
 .hero__tagline em {
   color: var(--accent);
   font-style: italic;
   font-weight: 500;
 }
+
+/* Cinematic full-bleed cover image right under the title block */
+.hero-cover {
+  margin: 40px 0 0;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
+  max-width: 100vw;
+  overflow: hidden;
+  background: #0a0c10;
+}
+.hero-cover__img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 1.6s cubic-bezier(0.2, 0.6, 0.3, 1);
+  will-change: transform;
+}
+.hero-cover:hover .hero-cover__img { transform: scale(1.015); }
+
+.hero-cover__cap {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 14px 32px 0;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-family: $font-mono;
+  font-size: 11.5px;
+  color: var(--text-faint);
+  letter-spacing: 0.06em;
+}
+.hero-cover__cap em {
+  font-style: italic;
+  color: var(--text-mute);
+  letter-spacing: 0;
+}
+
+/* A compact identity row that lives below the cover image */
+.hero-after {
+  padding: 32px 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Prevent horizontal scrollbar caused by the 100vw break-out */
+body { overflow-x: hidden; }
 
 .hero__chips {
   display: flex;
@@ -200,7 +282,9 @@ ul, ol { margin: 0 0 1em; padding-left: 1.2em; }
   color: var(--text-mute);
   font-family: $font-mono;
   letter-spacing: 0.01em;
+  transition: all 0.18s ease;
 }
+.chip:hover { border-color: var(--accent); color: var(--text); }
 .chip__dot {
   width: 6px; height: 6px; border-radius: 50%;
   background: var(--accent);
@@ -327,7 +411,9 @@ ul, ol { margin: 0 0 1em; padding-left: 1.2em; }
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.2, 0.6, 0.3, 1);
 }
+.highlight:hover .highlight__media img { transform: scale(1.04); }
 .highlight__badge {
   position: absolute;
   top: 10px; left: 10px;
@@ -408,7 +494,13 @@ ul, ol { margin: 0 0 1em; padding-left: 1.2em; }
   background: var(--surface-elev);
   aspect-ratio: 16 / 9;
 }
-.pub__media img { width: 100%; height: 100%; object-fit: cover; }
+.pub__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.2, 0.6, 0.3, 1);
+}
+.pub:hover .pub__media img { transform: scale(1.05); }
 .pub__badge {
   position: absolute;
   top: 6px; left: 6px;
@@ -624,9 +716,12 @@ ul, ol { margin: 0 0 1em; padding-left: 1.2em; }
 
 @media (max-width: 720px) {
   .wrap { padding: 0 20px; }
-  .hero { padding: 56px 0 16px; gap: 14px; }
-  .hero__name { font-size: 34px; }
-  .hero__tagline { font-size: 18px; }
+  .hero { padding: 56px 0 0; gap: 10px; }
+  .hero__name { font-size: 32px; }
+  .hero__tagline { font-size: 17px; }
+  .hero-cover { margin-top: 28px; }
+  .hero-cover__cap { padding: 12px 20px 0; font-size: 11px; }
+  .hero-after { padding: 24px 0 12px; }
 
   .section { padding: 40px 0 10px; }
   .section__title { font-size: 20px; margin-bottom: 22px; }

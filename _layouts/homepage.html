@@ -64,7 +64,24 @@
         {% if site.tagline %}
         <p class="hero__tagline">{{ site.tagline }}</p>
         {% endif %}
+      </header>
 
+      <figure class="hero-cover">
+        <picture>
+          <source media="(max-width: 720px)" srcset="./assets/img/lumi-hero-960.jpg">
+          <img class="hero-cover__img"
+               src="./assets/img/lumi-hero.jpg"
+               alt="Digital human Lumi dancing under a full moon, from a Mid-Autumn vignette by miHoYo"
+               fetchpriority="high"
+               decoding="async">
+        </picture>
+        <figcaption class="hero-cover__cap">
+          <span><em>Lumi</em> · Mid-Autumn vignette · official PV, miHoYo 2022</span>
+          <span>Cloth &amp; hair simulation · CFX Tech Lead</span>
+        </figcaption>
+      </figure>
+
+      <section class="hero-after">
         {% if site.career %}
         <div class="hero__chips">
           {% for c in site.career %}
@@ -101,7 +118,7 @@
           </a>
           {% endif %}
         </div>
-      </header>
+      </section>
 
       <main>
         {{ content }}
