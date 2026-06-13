@@ -19,7 +19,7 @@ layout: homepage
   </figure>
 
   <div class="showcase__side">
-    <figure class="work-figure">
+    <a class="work-figure work-figure--link" href="https://www.bilibili.com/video/BV1GH4y1Z7yS" target="_blank" rel="noopener">
       <div class="fig-num">Fig. 02</div>
       <picture>
         <source srcset="./assets/img/lumi-moon.avif" type="image/avif">
@@ -27,26 +27,21 @@ layout: homepage
       </picture>
       <figcaption>
         <span><em>Lumi</em> — 寄明月 · CFX</span>
-        <span>official PV · miHoYo</span>
+        <span>▷ bilibili</span>
       </figcaption>
-    </figure>
+    </a>
 
-    <div class="showcase__links">
-      <a class="lumi__card" href="https://www.bilibili.com/video/BV1GH4y1Z7yS" target="_blank" rel="noopener">
-        <span class="lumi__icon"><svg><use href="#i-play"/></svg></span>
-        <span>
-          <span class="lumi__title">yoyo_Lumi · CFX</span>
-          <span class="lumi__sub">bilibili · breakdown</span>
-        </span>
-      </a>
-      <a class="lumi__card" href="https://www.bilibili.com/video/BV1LV4y1b7ba" target="_blank" rel="noopener">
-        <span class="lumi__icon"><svg><use href="#i-play"/></svg></span>
-        <span>
-          <span class="lumi__title">yoyo_Lumi · Live Show</span>
-          <span class="lumi__sub">bilibili · performance</span>
-        </span>
-      </a>
-    </div>
+    <a class="work-figure work-figure--link" href="https://www.bilibili.com/video/BV1LV4y1b7ba" target="_blank" rel="noopener">
+      <div class="fig-num">Fig. 03</div>
+      <picture>
+        <source srcset="./assets/img/lumi-summer.webp" type="image/webp">
+        <img src="./assets/img/lumi-summer.jpg" alt="Lumi — Summer Live Show official artwork, miHoYo" loading="lazy" decoding="async">
+      </picture>
+      <figcaption>
+        <span><em>Lumi</em> — 夏日时光放映会 · live show</span>
+        <span>▷ bilibili</span>
+      </figcaption>
+    </a>
   </div>
 </div>
 </section>
