@@ -133,7 +133,18 @@ layout: homepage
     </span>
   </div>
   <div class="game">
-    <span class="game__icon">🃏</span>
+    <span class="game__icon">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+        <defs>
+          <linearGradient id="hs-amber" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#fde68a"/>
+            <stop offset="0.5" stop-color="#f59e0b"/>
+            <stop offset="1" stop-color="#b45309"/>
+          </linearGradient>
+        </defs>
+        <polygon points="12,1.5 21.4,7 21.4,17 12,22.5 2.6,17 2.6,7" fill="url(#hs-amber)" stroke="#78350f" stroke-width="0.8"/>
+      </svg>
+    </span>
     <span class="game__body">
       <span class="game__title">Hearthstone</span>
       <span class="game__detail">Top <strong>2000 Legend</strong></span>
