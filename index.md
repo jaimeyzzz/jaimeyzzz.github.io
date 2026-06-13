@@ -2,6 +2,56 @@
 layout: homepage
 ---
 
+<section class="section section--showcase" id="industry">
+<h2 class="section__title">Industry · miHoYo</h2>
+
+<div class="showcase">
+  <figure class="work-figure showcase__main">
+    <div class="fig-num">Fig. 01</div>
+    <picture>
+      <source media="(max-width: 720px)" srcset="./assets/img/shenhe-960.jpg">
+      <img src="./assets/img/shenhe.jpg" alt="Shenhe — new outfit promotional art" loading="lazy" decoding="async">
+    </picture>
+    <figcaption>
+      <span><em>Shenhe</em> — new outfit · character animation</span>
+      <span>Genshin Impact · miHoYo</span>
+    </figcaption>
+  </figure>
+
+  <div class="showcase__side">
+    <figure class="work-figure">
+      <div class="fig-num">Fig. 02</div>
+      <picture>
+        <source media="(max-width: 720px)" srcset="./assets/img/lumi-hero-960.jpg">
+        <img src="./assets/img/lumi-hero.jpg" alt="Lumi — Mid-Autumn vignette, miHoYo digital human" loading="lazy" decoding="async">
+      </picture>
+      <figcaption>
+        <span><em>Lumi</em> — Mid-Autumn vignette · CFX</span>
+        <span>official PV · miHoYo</span>
+      </figcaption>
+    </figure>
+
+    <div class="showcase__links">
+      <a class="lumi__card" href="https://www.bilibili.com/video/BV1GH4y1Z7yS" target="_blank" rel="noopener">
+        <span class="lumi__icon"><svg><use href="#i-play"/></svg></span>
+        <span>
+          <span class="lumi__title">yoyo_Lumi · CFX</span>
+          <span class="lumi__sub">bilibili · breakdown</span>
+        </span>
+      </a>
+      <a class="lumi__card" href="https://www.bilibili.com/video/BV1LV4y1b7ba" target="_blank" rel="noopener">
+        <span class="lumi__icon"><svg><use href="#i-play"/></svg></span>
+        <span>
+          <span class="lumi__title">yoyo_Lumi · Live Show</span>
+          <span class="lumi__sub">bilibili · performance</span>
+        </span>
+      </a>
+    </div>
+  </div>
+</div>
+</section>
+
+
 <section class="section" id="about">
 <h2 class="section__title">About</h2>
 
@@ -44,39 +94,6 @@ layout: homepage
 
 
 {% include_relative _includes/highlights.md %}
-
-
-<section class="section" id="industry">
-<h2 class="section__title">Industry · miHoYo</h2>
-
-<figure class="work-figure">
-  <picture>
-    <source media="(max-width: 720px)" srcset="./assets/img/shenhe-960.jpg">
-    <img src="./assets/img/shenhe.jpg" alt="Shenhe — new outfit promotional art" loading="lazy" decoding="async">
-  </picture>
-  <figcaption>
-    <span><em>Shenhe</em> · new outfit · character animation</span>
-    <span>Genshin Impact · miHoYo</span>
-  </figcaption>
-</figure>
-
-<div class="lumi">
-  <a class="lumi__card" href="https://www.bilibili.com/video/BV1GH4y1Z7yS" target="_blank" rel="noopener">
-    <span class="lumi__icon"><svg><use href="#i-play"/></svg></span>
-    <span>
-      <span class="lumi__title">yoyo_Lumi · CFX</span>
-      <span class="lumi__sub">bilibili · cloth &amp; hair sim breakdown</span>
-    </span>
-  </a>
-  <a class="lumi__card" href="https://www.bilibili.com/video/BV1LV4y1b7ba" target="_blank" rel="noopener">
-    <span class="lumi__icon"><svg><use href="#i-play"/></svg></span>
-    <span>
-      <span class="lumi__title">yoyo_Lumi · Live Show</span>
-      <span class="lumi__sub">bilibili · realtime performance</span>
-    </span>
-  </a>
-</div>
-</section>
 
 
 {% include_relative _includes/publications.md %}
