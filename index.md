@@ -47,47 +47,6 @@ layout: homepage
 </section>
 
 
-<section class="section" id="about">
-<h2 class="section__title">About</h2>
-
-<div class="about">
-<p>I am <strong>Jia-Ming Lu</strong>, a researcher working at the intersection of <strong>physically-based simulation</strong>, <strong>animation</strong>, and <strong>AI for 3D content creation</strong>. I&rsquo;m deeply dedicated to unlocking the full potential of human creativity, driven by a passion for delving into the underlying, fundamental relationships between things.</p>
-</div>
-
-<div class="timeline">
-  <div class="timeline__row">
-    <div class="timeline__when">2024 — now</div>
-    <div class="timeline__what"><strong>ByteDance</strong> — Researcher, AI3D</div>
-  </div>
-  <div class="timeline__row">
-    <div class="timeline__when">2021 — 2024</div>
-    <div class="timeline__what"><strong>miHoYo</strong> — CFX Tech Lead &amp; Cloth Simulation Topic Owner. Worked on the digital human <em>Lumi</em> and <em>Genshin Impact</em>.</div>
-  </div>
-  <div class="timeline__row">
-    <div class="timeline__when">2016 — 2021</div>
-    <div class="timeline__what"><strong>Ph.D., Tsinghua University</strong> — Computer Graphics, advised by Prof. Shi-Min Hu.</div>
-  </div>
-  <div class="timeline__row">
-    <div class="timeline__when">2012 — 2016</div>
-    <div class="timeline__what"><strong>B.S., Tsinghua University</strong></div>
-  </div>
-</div>
-</section>
-
-
-<section class="section" id="interests">
-<h2 class="section__title">Research Interests</h2>
-
-<div class="tags">
-  <span class="tag"><strong>CG</strong> physically-based simulation</span>
-  <span class="tag"><strong>CG</strong> differentiable simulation</span>
-  <span class="tag"><strong>ML</strong> animation generation</span>
-  <span class="tag"><strong>ML</strong> world model</span>
-  <span class="tag"><strong>3D</strong> neural fields &amp; representations</span>
-</div>
-</section>
-
-
 {% include_relative _includes/publications.md %}
 
 

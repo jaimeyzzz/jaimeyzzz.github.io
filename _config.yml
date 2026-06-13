@@ -7,10 +7,13 @@ email: jaimeyzzz@outlook.com
 # Role line shown under the name in the hero
 role: Researcher, Computer Graphics & AI3D
 
-# Single-line tagline. Wrap the highlight in <em>...</em>.
+# Short intro paragraph that sits under the name. Wrap accents in <em>...</em>.
 tagline: >-
-  Researcher on <em>physically-based simulation</em> and AI for 3D content.
-  Currently at <em>ByteDance</em>, formerly CFX Tech Lead at <em>miHoYo</em>.
+  Researcher in <em>physically-based simulation</em> and
+  <em>AI for 3D content</em>.
+  Currently at <em>ByteDance</em>, previously CFX Tech Lead at
+  <em>miHoYo</em> (Lumi, Genshin Impact). Ph.D. from Tsinghua University,
+  advised by Prof. Shi-Min Hu.
 
 # Career chips shown in the hero (most recent first)
 career:
