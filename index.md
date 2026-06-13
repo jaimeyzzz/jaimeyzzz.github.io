@@ -68,30 +68,6 @@ layout: homepage
 </section>
 
 
-<section class="section" id="news">
-<h2 class="section__title">News</h2>
-
-<div class="news">
-  <div class="news__row">
-    <div class="news__when">Aug. 2025</div>
-    <div class="news__what">Our work <strong>FGMM</strong> is accepted to <strong>SIGGRAPH Asia 2025</strong> (TOG paper).</div>
-  </div>
-  <div class="news__row">
-    <div class="news__when">Apr. 2025</div>
-    <div class="news__what">Our work <strong>RID</strong> is accepted to <strong>TOG</strong>.</div>
-  </div>
-  <div class="news__row">
-    <div class="news__when">Dec. 2024</div>
-    <div class="news__what">Our work <strong>IBDEM</strong> is accepted to <strong>TOG</strong>.</div>
-  </div>
-  <div class="news__row">
-    <div class="news__when">Feb. 2020</div>
-    <div class="news__what">Our work <strong>BDEM</strong> is accepted to <strong>TVCG</strong>.</div>
-  </div>
-</div>
-</section>
-
-
 {% include_relative _includes/publications.md %}
 
 
