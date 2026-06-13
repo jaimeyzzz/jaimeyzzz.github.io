@@ -88,9 +88,6 @@ layout: homepage
 </section>
 
 
-{% include_relative _includes/highlights.md %}
-
-
 {% include_relative _includes/publications.md %}
 
 
