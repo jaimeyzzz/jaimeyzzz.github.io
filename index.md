@@ -46,8 +46,19 @@ layout: homepage
 {% include_relative _includes/highlights.md %}
 
 
-<section class="section" id="lumi">
-<h2 class="section__title">Digital Human · Lumi</h2>
+<section class="section" id="industry">
+<h2 class="section__title">Industry · miHoYo</h2>
+
+<figure class="work-figure">
+  <picture>
+    <source media="(max-width: 720px)" srcset="./assets/img/shenhe-960.jpg">
+    <img src="./assets/img/shenhe.jpg" alt="Shenhe — new outfit promotional art" loading="lazy" decoding="async">
+  </picture>
+  <figcaption>
+    <span><em>Shenhe</em> · new outfit · character animation</span>
+    <span>Genshin Impact · miHoYo</span>
+  </figcaption>
+</figure>
 
 <div class="lumi">
   <a class="lumi__card" href="https://www.bilibili.com/video/BV1GH4y1Z7yS" target="_blank" rel="noopener">

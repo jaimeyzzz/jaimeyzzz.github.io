@@ -600,6 +600,47 @@ body { overflow-x: hidden; }
 .news__what a { color: var(--text); border-bottom: 1px solid var(--border-strong); }
 .news__what a:hover { color: var(--accent); border-color: var(--accent); }
 
+/* ---------- Industry work: figure cards ---------- */
+
+.work-figure {
+  margin: 0 0 24px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.work-figure:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-1);
+}
+.work-figure picture, .work-figure img {
+  width: 100%;
+  display: block;
+}
+.work-figure img {
+  transition: transform 0.9s cubic-bezier(0.2, 0.6, 0.3, 1);
+}
+.work-figure:hover img { transform: scale(1.02); }
+
+.work-figure figcaption {
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-family: $font-mono;
+  font-size: 12px;
+  color: var(--text-faint);
+  letter-spacing: 0.04em;
+  border-top: 1px solid var(--hairline);
+}
+.work-figure figcaption em {
+  color: var(--text-mute);
+  font-style: italic;
+  letter-spacing: 0;
+}
+
 /* ---------- Lumi / Digital human ---------- */
 
 .lumi {
