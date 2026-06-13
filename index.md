@@ -134,15 +134,14 @@ layout: homepage
   </div>
   <div class="game">
     <span class="game__icon">
-      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" style="display:block">
         <defs>
-          <linearGradient id="hs-amber" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#fde68a"/>
-            <stop offset="0.5" stop-color="#f59e0b"/>
-            <stop offset="1" stop-color="#b45309"/>
+          <linearGradient id="hs-orange" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#fdba74"/>
+            <stop offset="1" stop-color="#ea580c"/>
           </linearGradient>
         </defs>
-        <polygon points="12,1.5 21.4,7 21.4,17 12,22.5 2.6,17 2.6,7" fill="url(#hs-amber)" stroke="#78350f" stroke-width="0.8"/>
+        <polygon points="12,2 20.66,7 20.66,17 12,22 3.34,17 3.34,7" fill="url(#hs-orange)"/>
       </svg>
     </span>
     <span class="game__body">
