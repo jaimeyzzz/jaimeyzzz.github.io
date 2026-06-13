@@ -58,69 +58,49 @@
     <div class="wrap">
 
       <header class="hero">
-        <div class="hero__main">
-          <h1 class="hero__name">
-            <span class="hero__name__first">Jia-Ming</span>
-            <span class="hero__name__last">Lu.</span>
-          </h1>
-          {% if site.role %}<div class="hero__role">{{ site.role }}</div>{% endif %}
+        <h1 class="hero__name">{{ site.title }}</h1>
+        {% if site.role %}<div class="hero__role">{{ site.role }}</div>{% endif %}
 
-          {% if site.tagline %}
-          <p class="hero__tagline">{{ site.tagline }}</p>
-          {% endif %}
+        {% if site.tagline %}
+        <p class="hero__tagline">{{ site.tagline }}</p>
+        {% endif %}
 
-          {% if site.career %}
-          <div class="hero__chips">
-            {% for c in site.career %}
-            <span class="chip"><span class="chip__dot"></span>{{ c }}</span>
-            {% endfor %}
-          </div>
-          {% endif %}
-
-          <div class="hero__socials">
-            {% if site.email %}
-            <a class="sociallink sociallink__email" href="mailto:{{ site.email }}" aria-label="Email">
-              <svg><use href="#i-mail"/></svg>
-              <span>{{ site.email }}</span>
-            </a>
-            {% endif %}
-            {% if site.google_scholar %}
-            <a class="sociallink" href="{{ site.google_scholar }}" aria-label="Google Scholar" target="_blank" rel="noopener">
-              <svg><use href="#i-scholar"/></svg>
-            </a>
-            {% endif %}
-            {% if site.github_link %}
-            <a class="sociallink" href="{{ site.github_link }}" aria-label="GitHub" target="_blank" rel="noopener">
-              <svg><use href="#i-github"/></svg>
-            </a>
-            {% endif %}
-            {% if site.linkedin %}
-            <a class="sociallink" href="{{ site.linkedin }}" aria-label="LinkedIn" target="_blank" rel="noopener">
-              <svg><use href="#i-linkedin"/></svg>
-            </a>
-            {% endif %}
-            {% if site.twitter %}
-            <a class="sociallink" href="{{ site.twitter }}" aria-label="Twitter" target="_blank" rel="noopener">
-              <svg><use href="#i-twitter"/></svg>
-            </a>
-            {% endif %}
-          </div>
+        {% if site.career %}
+        <div class="hero__chips">
+          {% for c in site.career %}
+          <span class="chip"><span class="chip__dot"></span>{{ c }}</span>
+          {% endfor %}
         </div>
+        {% endif %}
 
-        <aside class="hero__aside">
-          <div>
-            <div class="aside__kicker">Currently</div>
-            <strong>ByteDance · AI3D</strong>
-          </div>
-          <div>
-            <div class="aside__kicker">Previously</div>
-            <strong>miHoYo · 2021–2024</strong><br>
-            <strong>Tsinghua · Ph.D. 2021</strong>
-          </div>
-          <div>
-            <div class="aside__kicker">Issue №01 — 2026</div>
-          </div>
-        </aside>
+        <div class="hero__socials">
+          {% if site.email %}
+          <a class="sociallink sociallink__email" href="mailto:{{ site.email }}" aria-label="Email">
+            <svg><use href="#i-mail"/></svg>
+            <span>{{ site.email }}</span>
+          </a>
+          {% endif %}
+          {% if site.google_scholar %}
+          <a class="sociallink" href="{{ site.google_scholar }}" aria-label="Google Scholar" target="_blank" rel="noopener">
+            <svg><use href="#i-scholar"/></svg>
+          </a>
+          {% endif %}
+          {% if site.github_link %}
+          <a class="sociallink" href="{{ site.github_link }}" aria-label="GitHub" target="_blank" rel="noopener">
+            <svg><use href="#i-github"/></svg>
+          </a>
+          {% endif %}
+          {% if site.linkedin %}
+          <a class="sociallink" href="{{ site.linkedin }}" aria-label="LinkedIn" target="_blank" rel="noopener">
+            <svg><use href="#i-linkedin"/></svg>
+          </a>
+          {% endif %}
+          {% if site.twitter %}
+          <a class="sociallink" href="{{ site.twitter }}" aria-label="Twitter" target="_blank" rel="noopener">
+            <svg><use href="#i-twitter"/></svg>
+          </a>
+          {% endif %}
+        </div>
       </header>
 
       <main>
