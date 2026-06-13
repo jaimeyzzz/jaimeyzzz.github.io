@@ -13,7 +13,7 @@ layout: homepage
       <img src="./assets/img/shenhe.jpg" alt="Shenhe — new outfit promotional art" loading="lazy" decoding="async">
     </picture>
     <figcaption>
-      <span><em>Shenhe</em> — new outfit · character animation</span>
+      <span><em>Shenhe</em> — 冷花幽露 · character animation</span>
       <span>Genshin Impact · miHoYo</span>
     </figcaption>
   </figure>
