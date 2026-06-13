@@ -209,18 +209,18 @@ html {
 
 .hero__name {
   font-family: $font-serif;
-  font-size: 124px;
+  font-size: 96px;
   font-weight: 500;
   font-style: italic;
-  letter-spacing: -0.035em;
-  line-height: 0.9;
+  letter-spacing: -0.03em;
+  line-height: 0.92;
   margin: 0;
   color: var(--text);
 }
 .hero__name-last {
   display: inline-block;
   /* slight optical adjustment so the "Lu." sits beside Jia-Ming nicely */
-  margin-left: 14px;
+  margin-left: 10px;
 }
 .hero__period {
   color: var(--accent);
@@ -827,7 +827,7 @@ a.work-figure--link:hover figcaption span:last-child {
 }
 
 @media (max-width: 960px) {
-  .hero__name { font-size: 96px; line-height: 0.92; }
+  .hero__name { font-size: 80px; line-height: 0.94; }
   .section__title { font-size: 32px; }
 }
 
