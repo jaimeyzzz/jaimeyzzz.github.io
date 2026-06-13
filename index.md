@@ -22,11 +22,11 @@ layout: homepage
     <figure class="work-figure">
       <div class="fig-num">Fig. 02</div>
       <picture>
-        <source media="(max-width: 720px)" srcset="./assets/img/lumi-hero-960.jpg">
-        <img src="./assets/img/lumi-hero.jpg" alt="Lumi — Mid-Autumn vignette, miHoYo digital human" loading="lazy" decoding="async">
+        <source srcset="./assets/img/lumi-moon.avif" type="image/avif">
+        <img src="./assets/img/lumi-moon.jpg" alt="Lumi — official Mid-Autumn artwork, miHoYo digital human" loading="lazy" decoding="async">
       </picture>
       <figcaption>
-        <span><em>Lumi</em> — Mid-Autumn vignette · CFX</span>
+        <span><em>Lumi</em> — 千里共明月 · CFX</span>
         <span>official PV · miHoYo</span>
       </figcaption>
     </figure>
