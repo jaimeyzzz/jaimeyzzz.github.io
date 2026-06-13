@@ -7,6 +7,8 @@ main:
     code: https://github.com/jaimeyzzz/fgmm
     pdf: https://dl.acm.org/doi/10.1145/3763327
     image: /assets/img/siggraph_asia_fgmm.jpg
+    featured: true
+    blurb: A fast Galerkin multigrid solver for elasticity on unstructured meshes, bringing near-linear scaling to production simulation pipelines.
 
   - title: Reliable Iterative Dynamics - A Versatile Method for Fast and Robust Simulation
     authors: <strong>Jia-Ming Lu</strong>, Shi-Min Hu
@@ -14,6 +16,8 @@ main:
     conference: ACM Transactions on Graphics, 2025 (To be presented at SIGGRAPH Asia 2025)
     pdf: https://dl.acm.org/doi/10.1145/3734518
     image: /assets/img/tog_rid.jpg
+    featured: true
+    blurb: A versatile and robust implicit time-stepping framework that converges where standard Newton solvers diverge — practical fast simulation for cloth, soft body, and rigid contact.
     
   - title: Implicit Bonded Discrete Element Method with Manifold Optimization
     authors: <strong>Jia-Ming Lu</strong>, Geng-Chen Cao, Chen-Feng Li, Shi-Min Hu
@@ -21,6 +25,8 @@ main:
     conference: ACM Transactions on Graphics, 2024 (To be presented at SIGGRAPH Asia 2025)
     pdf: https://dl.acm.org/doi/10.1145/3711852
     image: /assets/img/tog_ibdem.jpg
+    featured: true
+    blurb: An implicit bonded DEM with manifold optimization, enabling large time steps for brittle fracture and granular flow simulations.
 
   - title: Simulating Fractures with Bonded Discrete Element Method
     authors: <strong>Jia-Ming Lu</strong>, Chen-Feng Li, Geng-Chen Cao, Shi-Min Hu

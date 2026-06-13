@@ -1,8 +1,22 @@
-# Basic Information 
+# Basic Information
 title: Jia-Ming Lu
-position: Ph.D. 
+position: Ph.D.
 affiliation: Tsinghua University
 email: jaimeyzzz@outlook.com
+
+# Role line shown under the name in the hero
+role: Researcher, Computer Graphics & AI3D
+
+# Single-line tagline. Wrap the highlight in <em>...</em>.
+tagline: >-
+  I build <em>physically-based simulators</em> and neural systems for
+  digital humans, animation, and 3D content creation.
+
+# Career chips shown in the hero (most recent first)
+career:
+  - "Now · ByteDance AI3D"
+  - "2021–2024 · miHoYo CFX Lead"
+  - "Ph.D. · Tsinghua, 2021"
 
 # Search Engine Optimization (SEO)
 # The following information is used to improve the website traffic from search engines, e.g., Google.
