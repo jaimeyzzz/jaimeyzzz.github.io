@@ -29,3 +29,15 @@ I’m deeply dedicated to unlocking the full potential of human creativity. What
 {% include_relative _includes/publications.md %}
 
 {% include_relative _includes/services.md %}
+
+## Game Achievements
+
+Outside of work, I'm a long-time action-game enthusiast. A few personal milestones I'm proud of:
+
+<ul style="list-style: none; padding-left: 0;">
+  <li style="margin: 8px 0;"><span style="display:inline-block; width:1.8em; text-align:center;">🐺</span> <strong>Monster Hunter</strong> — Zinogre (雷狼龙) Arena Quest cleared in <strong>6:30</strong></li>
+  <li style="margin: 8px 0;"><span style="display:inline-block; width:1.8em; text-align:center;">🔥</span> <strong>Dark Souls II</strong> — 100% achievements</li>
+  <li style="margin: 8px 0;"><span style="display:inline-block; width:1.8em; text-align:center;">🗡️</span> <strong>Sekiro: Shadows Die Twice</strong> — 100% achievements</li>
+  <li style="margin: 8px 0;"><span style="display:inline-block; width:1.8em; text-align:center;">👑</span> <strong>Elden Ring</strong> — 100% achievements</li>
+  <li style="margin: 8px 0;"><span style="display:inline-block; width:1.8em; text-align:center;">🃏</span> <strong>Hearthstone</strong> — Reached <strong>Top 2000 Legend</strong></li>
+</ul>
