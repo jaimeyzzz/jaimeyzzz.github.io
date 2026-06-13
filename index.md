@@ -26,7 +26,7 @@ layout: homepage
         <img src="./assets/img/lumi-moon.jpg" alt="Lumi — official Mid-Autumn artwork, miHoYo digital human" loading="lazy" decoding="async">
       </picture>
       <figcaption>
-        <span><em>Lumi</em> — 千里共明月 · CFX</span>
+        <span><em>Lumi</em> — 寄明月 · CFX</span>
         <span>official PV · miHoYo</span>
       </figcaption>
     </figure>
