@@ -209,28 +209,17 @@ html {
 
 .hero__name {
   font-family: $font-serif;
-  font-size: 96px;
+  font-size: 88px;
   font-weight: 500;
   font-style: italic;
   letter-spacing: -0.03em;
-  line-height: 0.92;
+  line-height: 1.0;
   margin: 0;
   color: var(--text);
+  white-space: nowrap;
 }
 .hero__name-last {
-  display: inline-block;
-  /* slight optical adjustment so the "Lu." sits beside Jia-Ming nicely */
-  margin-left: 10px;
-}
-.hero__period {
   color: var(--accent);
-  display: inline-block;
-  font-style: normal;
-  animation: dot-breathe 3.6s ease-in-out infinite;
-}
-@keyframes dot-breathe {
-  0%, 100% { opacity: 0.55; }
-  50%      { opacity: 1;    }
 }
 
 .hero__tagline {
@@ -827,7 +816,7 @@ a.work-figure--link:hover figcaption span:last-child {
 }
 
 @media (max-width: 960px) {
-  .hero__name { font-size: 80px; line-height: 0.94; }
+  .hero__name { font-size: 72px; }
   .section__title { font-size: 32px; }
 }
 
@@ -835,8 +824,7 @@ a.work-figure--link:hover figcaption span:last-child {
   .wrap { padding: 0 20px; }
   .hero { padding: 56px 0 12px; gap: 18px; }
   .hero__epigraph { font-size: 12.5px; }
-  .hero__name { font-size: 64px; line-height: 0.95; letter-spacing: -0.03em; }
-  .hero__name-last { margin-left: 8px; }
+  .hero__name { font-size: 52px; line-height: 1.02; letter-spacing: -0.025em; white-space: normal; }
   .hero__tagline { font-size: 17px; line-height: 1.5; }
   .hero__contact { font-size: 12px; }
   .hero__sep { margin: 0 6px; }
