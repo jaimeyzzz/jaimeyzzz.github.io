@@ -621,6 +621,15 @@ html {
 .work-figure:hover picture { border-color: var(--accent); }
 .work-figure:hover picture img { transform: scale(1.025); }
 
+/* Transparent-art variant: don't paint the surface behind the image, so
+   characters with cut-out backgrounds (PNG/WebP alpha) sit directly on
+   the page rather than inside a visible plate. */
+.work-figure--alpha picture {
+  background: transparent;
+  border-color: var(--hairline);
+}
+.work-figure--alpha:hover picture { border-color: var(--accent); }
+
 /* Linked figure variant: the whole card is a clickable bilibili link */
 a.work-figure--link {
   text-decoration: none;

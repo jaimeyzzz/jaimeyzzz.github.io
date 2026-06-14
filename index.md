@@ -31,11 +31,13 @@ layout: homepage
       </figcaption>
     </a>
 
-    <figure class="work-figure">
+    <figure class="work-figure work-figure--alpha">
       <div class="fig-num">Fig. 03</div>
       <picture>
-        <source media="(max-width: 720px)" srcset="./assets/img/shenhe-960.jpg">
-        <img src="./assets/img/shenhe.jpg" alt="Shenhe — new outfit promotional art" loading="lazy" decoding="async">
+        <source media="(max-width: 720px)" type="image/webp" srcset="./assets/img/shenhe-960.webp">
+        <source media="(max-width: 720px)" srcset="./assets/img/shenhe-960.png">
+        <source type="image/webp" srcset="./assets/img/shenhe.webp">
+        <img src="./assets/img/shenhe.png" alt="Shenhe — new outfit promotional art" loading="lazy" decoding="async">
       </picture>
       <figcaption>
         <span><em>Shenhe</em> — 冷花幽露 · character animation</span>
