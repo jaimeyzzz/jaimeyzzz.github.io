@@ -76,6 +76,13 @@ layout: homepage
     </span>
   </div>
   <div class="game">
+    <span class="game__icon">🕯️</span>
+    <span class="game__body">
+      <span class="game__title">Dark Souls III</span>
+      <span class="game__detail">Story <strong>cleared</strong></span>
+    </span>
+  </div>
+  <div class="game">
     <span class="game__icon">🗡️</span>
     <span class="game__body">
       <span class="game__title">Sekiro: Shadows Die Twice</span>
