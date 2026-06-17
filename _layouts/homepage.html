@@ -1,24 +1,55 @@
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: "en-US" }}">
   <head>
-    <title>{{ site.title }} | {{ site.role | default: site.affiliation }}</title>
+    {% assign page_role  = site.role | default: site.affiliation %}
+    {% assign page_title = site.title %}
+    {% assign page_desc  = site.description | default: site.tagline | strip_html | strip_newlines %}
+    {% assign og_image   = site.og_image | default: "/assets/img/og-cover.png" | absolute_url %}
+
+    <title>{{ page_title }}</title>
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="{{ site.description | default: site.tagline | strip_html | strip_newlines }}">
+    <meta name="description" content="{{ page_desc }}">
     {% if site.keywords %}
     <meta name="keywords" content="{{ site.keywords }}">
     {% endif %}
+    <meta name="author" content="{{ site.title }}">
+    <meta name="robots" content="index, follow">
     {% if site.canonical %}
     <link rel="canonical" href="{{ site.canonical }}"/>
     {% endif %}
     <meta name="theme-color" content="#0b0d10" media="(prefers-color-scheme: dark)">
     <meta name="theme-color" content="#fafaf8" media="(prefers-color-scheme: light)">
 
+    {% comment %} ---- Favicons & home-screen icons ---- {% endcomment %}
     <link rel="icon" media="(prefers-color-scheme:dark)" href="{{ site.favicon_dark }}" type="image/png" />
     <link rel="icon" media="(prefers-color-scheme:light)" href="{{ site.favicon }}" type="image/png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/img/apple-touch-icon.png">
     <script src="./assets/js/favicon-switcher.js" type="application/javascript" defer></script>
+
+    {% comment %} ---- Open Graph (Facebook / LinkedIn / WeChat) ---- {% endcomment %}
+    <meta property="og:type" content="profile">
+    <meta property="og:title" content="{{ page_title }}">
+    <meta property="og:description" content="{{ page_desc }}">
+    {% if site.canonical %}<meta property="og:url" content="{{ site.canonical }}">{% endif %}
+    <meta property="og:image" content="{{ og_image }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="{{ site.title }} — {{ page_role }}">
+    <meta property="og:site_name" content="{{ site.title }}">
+    <meta property="og:locale" content="en_US">
+    <meta property="profile:first_name" content="Jia-Ming">
+    <meta property="profile:last_name" content="Lu">
+
+    {% comment %} ---- Twitter / X Card ---- {% endcomment %}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ page_title }}">
+    <meta name="twitter:description" content="{{ page_desc }}">
+    <meta name="twitter:image" content="{{ og_image }}">
+    <meta name="twitter:image:alt" content="{{ site.title }} — {{ page_role }}">
+    {% if site.twitter_handle %}<meta name="twitter:creator" content="{{ site.twitter_handle }}">{% endif %}
 
     {% if site.font == "Sans Serif" %}
     <link rel="stylesheet" href="./assets/css/font_sans_serif.css">

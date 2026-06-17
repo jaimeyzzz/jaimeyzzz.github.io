@@ -1,7 +1,7 @@
 ;(function(mod){
 function collectLinks() {
   return Array.prototype.slice.apply(
-    document.head.querySelectorAll('link[rel*="icon"]')
+    document.head.querySelectorAll('link[rel="icon"][media]')
   )
 }
 
