@@ -120,5 +120,12 @@ layout: homepage
       <span class="game__detail">Arcade drum · 魔王曲 <strong>季曲・夏祭 cleared</strong></span>
     </span>
   </div>
+  <div class="game">
+    <span class="game__icon">🎶</span>
+    <span class="game__body">
+      <span class="game__title">Cytus</span>
+      <span class="game__detail">Hard 9 · <strong>Full Combo</strong></span>
+    </span>
+  </div>
 </div>
 </section>
