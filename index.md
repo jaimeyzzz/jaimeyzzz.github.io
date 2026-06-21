@@ -113,5 +113,12 @@ layout: homepage
       <span class="game__detail">Top <strong>2000 Legend</strong></span>
     </span>
   </div>
+  <div class="game">
+    <span class="game__icon">🥁</span>
+    <span class="game__body">
+      <span class="game__title">Taiko no Tatsujin</span>
+      <span class="game__detail">Arcade drum · 魔王曲 <strong>季曲・夏祭 cleared</strong></span>
+    </span>
+  </div>
 </div>
 </section>
