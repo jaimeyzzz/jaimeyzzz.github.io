@@ -90,7 +90,7 @@ layout: homepage
     </span>
   </div>
   <div class="game">
-    <span class="game__icon">👑</span>
+    <span class="game__icon">💍</span>
     <span class="game__body">
       <span class="game__title">Elden Ring</span>
       <span class="game__detail"><strong>100%</strong> achievements</span>
