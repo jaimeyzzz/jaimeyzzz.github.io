@@ -90,7 +90,17 @@ layout: homepage
     </span>
   </div>
   <div class="game">
-    <span class="game__icon">💍</span>
+    <span class="game__icon">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" style="display:block">
+        <defs>
+          <linearGradient id="er-gold" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#fde68a"/>
+            <stop offset="1" stop-color="#d4a017"/>
+          </linearGradient>
+        </defs>
+        <circle cx="12" cy="12" r="8" fill="none" stroke="url(#er-gold)" stroke-width="2.6"/>
+      </svg>
+    </span>
     <span class="game__body">
       <span class="game__title">Elden Ring</span>
       <span class="game__detail"><strong>100%</strong> achievements</span>
