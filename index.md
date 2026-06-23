@@ -64,7 +64,7 @@ layout: homepage
   <div class="game">
     <span class="game__icon">🐺</span>
     <span class="game__body">
-      <span class="game__title">Monster Hunter</span>
+      <span class="game__title">Monster Hunter: World</span>
       <span class="game__detail">Zinogre (雷狼龙) Arena · <strong>6:30</strong></span>
     </span>
   </div>
