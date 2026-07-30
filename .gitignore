@@ -7,3 +7,10 @@ Gemfile.lock
 git-update.sh
 assets/img/_originals_backup/
 .preview/
+
+# Blog drafts — never publish these. Preview locally, then move to _posts/.
+_drafts/
+.blog_preview/
+__pycache__/
+# Local preview tooling — kept out of the public repo (contains infra notes).
+tools/

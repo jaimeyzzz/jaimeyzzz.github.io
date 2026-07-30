@@ -96,6 +96,7 @@
 
         <nav class="hero__contact">
           {% if site.email %}<a href="mailto:{{ site.email }}">{{ site.email }}</a>{% endif %}
+          <span class="hero__sep" aria-hidden="true">·</span><a href="/blog/">{{ site.blog_title | default: "Notes" }}</a>
           {% if site.google_scholar %}<span class="hero__sep" aria-hidden="true">·</span><a href="{{ site.google_scholar }}" target="_blank" rel="noopener">Scholar</a>{% endif %}
           {% if site.github_link %}<span class="hero__sep" aria-hidden="true">·</span><a href="{{ site.github_link }}" target="_blank" rel="noopener">GitHub</a>{% endif %}
           {% if site.linkedin %}<span class="hero__sep" aria-hidden="true">·</span><a href="{{ site.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>{% endif %}

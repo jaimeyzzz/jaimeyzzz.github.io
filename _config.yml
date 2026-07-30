@@ -58,6 +58,24 @@ font: "Serif" # or "Sans Serif"
 # Please remove this if you don't use Google Analytics
 google_analytics: G-WGJQSDGL2E
 
+# Let MathJax handle math: keep $…$ / $$…$$ intact instead of running a
+# (v2-style) math engine kramdown/MathJax v3 wouldn't agree on.
+kramdown:
+  math_engine: null
+
+# ---- Blog ----
+# The masthead shown on /blog and every post. Rename freely.
+blog_title: "Notes"
+blog_tagline: "Essays, and an open log of learning how LLMs actually work."
+
+# Every file in _posts/ gets the post layout automatically.
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+
 # The following files will be removed from the generated website.
 exclude:
   - Gemfile
@@ -71,3 +89,8 @@ exclude:
   - html_source_file/
   - assets/img/fine/
   - assets/img/_originals_backup/
+  # Dev tooling & local preview output — never ship to the live site.
+  - tools/
+  - .blog_preview/
+  - __pycache__/
+  - vendor/
