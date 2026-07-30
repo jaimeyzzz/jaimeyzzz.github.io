@@ -66,7 +66,7 @@ kramdown:
 # ---- Blog ----
 # The masthead shown on /blog and every post. Rename freely.
 blog_title: "Notes"
-blog_tagline: "Essays, and an open log of learning how LLMs actually work."
+blog_tagline: "Essays, and an open log of learning."
 
 # Every file in _posts/ gets the post layout automatically.
 defaults:
