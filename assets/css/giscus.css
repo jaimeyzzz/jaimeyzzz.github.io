@@ -15,7 +15,14 @@
 @font-face{font-family:'Crimson Pro';font-style:normal;font-weight:400 700;font-display:swap;src:url(https://www.jaimeyzzz.com/assets/fonts/crimson-pro/q5uDsoa5M_tv7IihmnkabARboYF6CsKj.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
 main,.gsc-comment-box,.gsc-comment,.gsc-header,.form-control,.btn,button,input,textarea{font-family:"Crimson Pro",Georgia,"Songti SC","Songti TC",serif !important;}
 .gsc-comment-content,.gsc-comment-box-textarea{font-size:16px;line-height:1.75;}
-/* borders: rounder & calmer, matching the blog */
-.form-control,.gsc-comment-box-write,.gsc-comment-content{border-radius:10px !important;}
-.rounded-t{border-radius:10px 10px 0 0 !important;}
+/* minimal: strip the nested enclosing frames, keep just one soft rounded input */
+.gsc-comment-box-write{border:none !important;box-shadow:none !important;background:transparent !important;}
+.rounded-t.border,.gsc-comment-box-tabs .rounded-t{border:none !important;background:transparent !important;}
+.form-control{border:1px solid var(--color-border-default) !important;border-radius:10px !important;}
+.gsc-reactions-button{border-color:transparent !important;}
+.color-border-primary.border-t,.my-2.border-t,.gsc-header{border-top-color:transparent !important;border-bottom-color:transparent !important;}
 .btn{border-radius:8px !important;}
+/* primary button: force the blog terracotta everywhere (kills GitHub green on hover / comment submit) */
+.btn-primary{background-color:#c2530b !important;border-color:rgba(0,0,0,.08) !important;color:#fff !important;}
+.btn-primary:hover,.btn-primary:focus,.btn-primary:active{background-color:#a8460a !important;}
+.btn-primary:disabled,.btn-primary[disabled]{background-color:#c2530b !important;opacity:.5;}
