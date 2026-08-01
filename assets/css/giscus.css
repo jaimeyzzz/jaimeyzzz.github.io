@@ -39,9 +39,9 @@ textarea.form-control{border-bottom:1px dashed var(--color-border-default) !impo
 .gsc-reactions-menu,.gsc-comment-reactions,.gsc-reply-reactions{display:none !important;}
 /* remove the "X 条回复" reply count */
 .gsc-comment-replies-count,.gsc-replies-count{display:none !important;}
-/* comment timestamp ("X 分钟前"): no underline, lighter */
-.gsc-comment-author a.link-secondary,.gsc-comment-author a.link-secondary time{text-decoration:none !important;color:var(--color-fg-subtle) !important;}
-.gsc-comment-author a.link-secondary:hover{text-decoration:none !important;color:var(--color-accent-fg) !important;}
+/* comment & reply timestamps ("X 分钟前"): no underline, lighter (covers replies too) */
+a.link-secondary:has(time),a.link-secondary:has(time) time{text-decoration:none !important;color:var(--color-fg-subtle) !important;}
+a.link-secondary:has(time):hover{text-decoration:none !important;color:var(--color-accent-fg) !important;}
 /* fully flat: drop the faint filled bands so only the hairlines remain */
 .gsc-comment-box-tabs,.gsc-comment-box-md-toolbar,.gsc-comment-box-bottom,.gsc-comment-box-preview,.gsc-header,.gsc-comment-box-write .rounded-t{background:transparent !important;}
 /* keep a light warm band behind the 输入/预览 tabs (user request) */
