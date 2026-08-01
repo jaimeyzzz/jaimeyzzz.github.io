@@ -35,6 +35,8 @@ textarea.form-control{border-bottom:1px dashed var(--color-border-default) !impo
 /* keep giscus's own horizontal dividers, softened */
 .border-t{border-top:1px solid var(--color-border-muted) !important;}
 .gsc-reactions-button{border-color:transparent !important;background:transparent !important;}
+/* remove the emoji-reaction picker (☺) under comments & replies */
+.gsc-reactions-menu{display:none !important;}
 /* fully flat: drop the faint filled bands so only the hairlines remain */
 .gsc-comment-box-tabs,.gsc-comment-box-md-toolbar,.gsc-comment-box-bottom,.gsc-comment-box-preview,.gsc-header,.gsc-comment-box-write .rounded-t{background:transparent !important;}
 /* keep a light warm band behind the 输入/预览 tabs (user request) */
