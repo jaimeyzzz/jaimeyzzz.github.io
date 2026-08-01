@@ -363,6 +363,29 @@ sup.cite a:hover { color: var(--accent-strong); }
   padding-top: 28px;
   border-top: 1px solid var(--hairline);
 }
+.comments-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: none;
+  border: 0;
+  padding: 2px 0;
+  margin: 0;
+  cursor: pointer;
+  font-family: $font-sans;
+  font-size: 15px;
+  color: var(--text-mute);
+}
+.comments-toggle:hover { color: var(--accent); }
+.comments-toggle__chevron {
+  width: 0; height: 0;
+  border-left: 6px solid currentColor;
+  border-top: 4.5px solid transparent;
+  border-bottom: 4.5px solid transparent;
+  transition: transform 0.18s ease;
+}
+.comments-toggle[aria-expanded="true"] .comments-toggle__chevron { transform: rotate(90deg); }
+.comments-body { margin-top: 22px; }
 
 /* ---------- Post footer nav ---------- */
 .article__footer {

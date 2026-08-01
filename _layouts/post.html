@@ -71,23 +71,36 @@
 
       {% if site.giscus_repo_id != "" and site.giscus_category_id != "" and page.comments != false %}
       <section class="comments">
-        <script src="https://giscus.app/client.js"
-          data-repo="{{ site.giscus_repo }}"
-          data-repo-id="{{ site.giscus_repo_id }}"
-          data-category="{{ site.giscus_category }}"
-          data-category-id="{{ site.giscus_category_id }}"
-          data-mapping="pathname"
-          data-strict="1"
-          data-reactions-enabled="0"
-          data-emit-metadata="0"
-          data-input-position="top"
-          data-theme="https://www.jaimeyzzz.com/assets/css/giscus.css"
-          data-lang="zh-CN"
-          data-loading="lazy"
-          crossorigin="anonymous"
-          async>
-        </script>
+        <button type="button" class="comments-toggle" aria-expanded="false" aria-controls="comments-body" onclick="toggleComments(this)">
+          <span class="comments-toggle__chevron" aria-hidden="true"></span>
+          <span class="comments-toggle__label">展开评论</span>
+        </button>
+        <div class="comments-body" id="comments-body" hidden></div>
       </section>
+      <script>
+        function toggleComments(btn) {
+          var body = btn.parentNode.querySelector('.comments-body');
+          var open = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', String(!open));
+          body.hidden = open;
+          btn.querySelector('.comments-toggle__label').textContent = open ? '展开评论' : '收起评论';
+          if (!open && !body.dataset.loaded) {
+            body.dataset.loaded = '1';
+            var s = document.createElement('script');
+            s.src = 'https://giscus.app/client.js';
+            var a = {
+              'data-repo': '{{ site.giscus_repo }}', 'data-repo-id': '{{ site.giscus_repo_id }}',
+              'data-category': '{{ site.giscus_category }}', 'data-category-id': '{{ site.giscus_category_id }}',
+              'data-mapping': 'pathname', 'data-strict': '1', 'data-reactions-enabled': '0',
+              'data-emit-metadata': '0', 'data-input-position': 'top',
+              'data-theme': 'https://www.jaimeyzzz.com/assets/css/giscus.css', 'data-lang': 'zh-CN'
+            };
+            Object.keys(a).forEach(function (k) { s.setAttribute(k, a[k]); });
+            s.crossOrigin = 'anonymous'; s.async = true;
+            body.appendChild(s);
+          }
+        }
+      </script>
       {% endif %}
 
       <footer class="site-footer">
