@@ -37,6 +37,8 @@ main,.gsc-comment-box,.gsc-comment,.gsc-header,.form-control,.btn,button,input,t
 .gsc-comment-box-tabs,.gsc-comment-box-md-toolbar,.gsc-comment-box-bottom,.gsc-comment-box-preview,.gsc-header,.gsc-comment-box-write .rounded-t{background:transparent !important;}
 /* counts ("X 个表情" / "X 条评论"): keep the comment area quiet, not loud black */
 .gsc-reactions-count,.gsc-comments-count{color:var(--color-fg-muted) !important;font-weight:400 !important;}
+/* keep a light warm band behind the 输入/预览 tabs (user request) */
+.gsc-comment-box-tabs{background:var(--color-canvas-subtle) !important;}
 
 /* buttons: keep a small radius, force the blog terracotta (no GitHub green anywhere) */
 .btn{border-radius:8px !important;}
