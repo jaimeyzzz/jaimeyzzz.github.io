@@ -37,6 +37,8 @@ textarea.form-control{border-bottom:1px dashed var(--color-border-default) !impo
 .gsc-reactions-button{border-color:transparent !important;background:transparent !important;}
 /* remove the emoji-reaction picker (☺) under comments & replies */
 .gsc-reactions-menu{display:none !important;}
+/* remove the "X 条回复" reply count */
+.gsc-comment-replies-count,.gsc-replies-count{display:none !important;}
 /* fully flat: drop the faint filled bands so only the hairlines remain */
 .gsc-comment-box-tabs,.gsc-comment-box-md-toolbar,.gsc-comment-box-bottom,.gsc-comment-box-preview,.gsc-header,.gsc-comment-box-write .rounded-t{background:transparent !important;}
 /* keep a light warm band behind the 输入/预览 tabs (user request) */
