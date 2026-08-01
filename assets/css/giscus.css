@@ -41,6 +41,11 @@ textarea.form-control{border-bottom:1px dashed var(--color-border-default) !impo
 .gsc-reactions-count,.gsc-comments-count{color:var(--color-fg-muted) !important;font-weight:400 !important;}
 /* keep a light warm band behind the 输入/预览 tabs (user request) */
 .gsc-comment-box-tabs{background:var(--color-canvas-subtle) !important;}
+/* sort control (最早/最新): plain text tabs, not a boxed button group */
+.gsc-right-header.BtnGroup,.gsc-right-header .BtnGroup-item{border:0 !important;box-shadow:none !important;background:transparent !important;}
+.gsc-right-header .BtnGroup-item .btn{border:0 !important;background:transparent !important;box-shadow:none !important;border-radius:0 !important;color:var(--color-fg-muted) !important;font-weight:400 !important;padding:2px 8px !important;}
+.gsc-right-header .BtnGroup-item--selected .btn{color:var(--color-fg-default) !important;font-weight:600 !important;}
+.gsc-right-header .BtnGroup-item .btn:hover{color:var(--color-accent-fg) !important;}
 
 /* buttons: keep a small radius, force the blog terracotta (no GitHub green anywhere) */
 .btn{border-radius:8px !important;}
