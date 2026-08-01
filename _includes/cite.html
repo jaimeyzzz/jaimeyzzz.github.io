@@ -8,4 +8,4 @@ Renders a superscript [n] linking to the matching entry in the post's
 {%- for r in page.references -%}
   {%- if r.key == _key -%}{%- assign _num = forloop.index -%}{%- endif -%}
 {%- endfor -%}
-{%- if _num > 0 -%}<sup class="cite"><a href="#ref-{{ _key }}">{{ _num }}</a></sup>{%- else -%}<sup class="cite" title="unknown citation: {{ _key }}">[?]</sup>{%- endif -%}
+{%- if _num > 0 -%}<sup class="cite"><a href="{{ page.url | relative_url }}#ref-{{ _key }}">{{ _num }}</a></sup>{%- else -%}<sup class="cite" title="unknown citation: {{ _key }}">[?]</sup>{%- endif -%}
