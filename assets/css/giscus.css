@@ -24,8 +24,10 @@ main,.gsc-comment-box,.gsc-comment,.gsc-header,.form-control,.btn,button,input,t
 /* the write field is a plain horizontal band (top+bottom hairline only) */
 .form-control{
   border-left:0 !important;border-right:0 !important;border-radius:0 !important;background:transparent !important;
-  border-top:0 !important;border-bottom:1px dashed var(--color-border-default) !important;
+  border-top:0 !important;border-bottom:0 !important;
 }
+/* only the real (resizable) textarea keeps a dashed bottom line */
+textarea.form-control{border-bottom:1px dashed var(--color-border-default) !important;}
 /* remove the comment speech-bubble arrow; separate comments with a single hairline */
 .gsc-comment-content::before,.gsc-comment-content::after{display:none !important;}
 .gsc-comment{border-top:1px solid var(--color-border-muted) !important;padding-top:12px !important;}
