@@ -2,6 +2,7 @@
 title: "人择"
 description: "开始记录我学习的过程。"
 tags: [llm, learning-log, 缘起]
+disclaimer: false
 ---
 
 我想要开始真的维护一个 blog，内容是我学习和研究的过程。

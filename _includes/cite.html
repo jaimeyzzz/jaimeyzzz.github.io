@@ -1,0 +1,11 @@
+{%- comment -%}
+Inline citation.  Usage in a post body:  {% cite some_key %}
+Renders a superscript [n] linking to the matching entry in the post's
+`references:` front-matter list (numbered by its position in that list).
+{%- endcomment -%}
+{%- assign _key = include.key -%}
+{%- assign _num = 0 -%}
+{%- for r in page.references -%}
+  {%- if r.key == _key -%}{%- assign _num = forloop.index -%}{%- endif -%}
+{%- endfor -%}
+{%- if _num > 0 -%}<sup class="cite"><a href="#ref-{{ _key }}">{{ _num }}</a></sup>{%- else -%}<sup class="cite" title="unknown citation: {{ _key }}">[?]</sup>{%- endif -%}

@@ -63,6 +63,15 @@ google_analytics: G-WGJQSDGL2E
 kramdown:
   math_engine: null
 
+# ---- Comments (Giscus · backed by GitHub Discussions, no server) ----
+# Fill giscus_repo_id + giscus_category_id after: (1) enabling Discussions on the
+# repo, (2) installing the giscus GitHub App, (3) copying the IDs from giscus.app.
+# Comments only render once both IDs are set.
+giscus_repo: "jaimeyzzz/jaimeyzzz.github.io"
+giscus_repo_id: "MDEwOlJlcG9zaXRvcnkzMzczOTQxNzM="
+giscus_category: "Announcements"
+giscus_category_id: "DIC_kwDOFBw5_c4DCa1e"
+
 # ---- Blog ----
 # The masthead shown on /blog and every post. Rename freely.
 blog_title: "Notes"

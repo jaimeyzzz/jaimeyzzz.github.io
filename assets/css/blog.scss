@@ -188,6 +188,19 @@ img { max-width: 100%; height: auto; display: block; }
   margin: 16px 0 0;
 }
 
+/* Top-of-post disclaimer (auto-rendered by the layout on every post) */
+.disclaimer {
+  margin: 0 0 34px;
+  padding: 12px 16px;
+  border-left: 3px solid var(--border-strong);
+  background: var(--bg-tint);
+  border-radius: 0 8px 8px 0;
+  font-family: $font-sans;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--text-mute);
+}
+
 .article__body { font-size: 20px; }
 .article__body > *:first-child { margin-top: 0; }
 
@@ -286,11 +299,76 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .article__body img { border-radius: 10px; margin: 28px auto; }
+
+/* Inline SVG figures + captions */
+.fig { margin: 30px 0; text-align: center; }
+.fig svg { max-width: 100%; height: auto; }
+.fig figcaption {
+  margin: 12px auto 0;
+  max-width: 34rem;
+  font-family: $font-sans;
+  font-style: italic;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-mute);
+}
 .article__body table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 17px; }
 .article__body th, .article__body td { border: 1px solid var(--border); padding: 8px 12px; text-align: left; }
 .article__body th { background: var(--bg-tint); font-family: $font-sans; font-size: 14px; }
 
+/* ---- Citations & references ---- */
+sup.cite {
+  font-size: 0.72em;
+  line-height: 0;
+  vertical-align: super;
+  margin-left: 1px;
+  font-family: $font-sans;
+}
+sup.cite a { color: var(--accent); text-decoration: none; }
+sup.cite a:hover { color: var(--accent-strong); }
+
+.references {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--hairline);
+}
+.references h2 {
+  font-family: $font-serif;
+  font-weight: 600;
+  font-size: 22px;
+  margin: 0 0 14px;
+}
+.references ol { margin: 0; padding-left: 1.6em; }
+.references li {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-mute);
+  margin-bottom: 9px;
+  padding-left: 4px;
+}
+.references li a {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-color: var(--border-strong);
+}
+.references li a:hover { color: var(--accent); text-decoration-color: var(--accent); }
+.references li:target { background: var(--accent-soft); border-radius: 4px; }
+
 .article__tags { margin-top: 40px; }
+
+/* ---------- Comments (Giscus) ---------- */
+.comments {
+  margin-top: 56px;
+  padding-top: 28px;
+  border-top: 1px solid var(--hairline);
+}
+.comments__title {
+  font-family: $font-serif;
+  font-weight: 600;
+  font-size: 22px;
+  margin: 0 0 18px;
+}
 
 /* ---------- Post footer nav ---------- */
 .article__footer {

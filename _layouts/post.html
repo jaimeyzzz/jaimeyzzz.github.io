@@ -39,9 +39,24 @@
           {% if lead %}<p class="article__lead">{{ lead }}</p>{% endif %}
         </header>
 
+        {% if page.disclaimer != false %}
+        <aside class="disclaimer">我不是这个领域的专家，也谈不上真懂，这里写的不一定正确。我只是在用费曼学习法：一边读 paper 学习，一边把思路完整地展开讲清楚，借此搭建自己的直觉，并随着新的进展不断修正它。</aside>
+        {% endif %}
+
         <div class="article__body">
           {{ content }}
         </div>
+
+        {% if page.references and page.references.size > 0 %}
+        <section class="references">
+          <h2>References</h2>
+          <ol>
+            {% for r in page.references %}
+            <li id="ref-{{ r.key }}">{% if r.url %}<a href="{{ r.url }}" target="_blank" rel="noopener">{{ r.title }}</a>{% else %}{{ r.title }}{% endif %}{% if r.authors %} · {{ r.authors }}{% endif %}{% if r.year %} ({{ r.year }}){% endif %}</li>
+            {% endfor %}
+          </ol>
+        </section>
+        {% endif %}
 
         {% if page.tags and page.tags.size > 0 %}
         <div class="article__tags">
@@ -53,6 +68,28 @@
           <a class="back-link" href="/blog/">Back to all posts</a>
         </footer>
       </article>
+
+      {% if site.giscus_repo_id != "" and site.giscus_category_id != "" and page.comments != false %}
+      <section class="comments">
+        <h2 class="comments__title">评论</h2>
+        <script src="https://giscus.app/client.js"
+          data-repo="{{ site.giscus_repo }}"
+          data-repo-id="{{ site.giscus_repo_id }}"
+          data-category="{{ site.giscus_category }}"
+          data-category-id="{{ site.giscus_category_id }}"
+          data-mapping="pathname"
+          data-strict="1"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="top"
+          data-theme="preferred_color_scheme"
+          data-lang="zh-CN"
+          data-loading="lazy"
+          crossorigin="anonymous"
+          async>
+        </script>
+      </section>
+      {% endif %}
 
       <footer class="site-footer">
         <span>© {{ "now" | date: "%Y" }} {{ site.title }}</span>
@@ -72,7 +109,26 @@
 
     {% comment %} MathJax — renders $…$ inline and $$…$$ display math {% endcomment %}
     <script>
-      window.MathJax = { tex: { inlineMath: [['$','$'], ['\\(','\\)']], displayMath: [['$$','$$'], ['\\[','\\]']] }, options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] } };
+      window.MathJax = {
+        tex: { inlineMath: [['$','$'], ['\\(','\\)']], displayMath: [['$$','$$'], ['\\[','\\]']] },
+        options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] },
+        startup: { pageReady: function () { return MathJax.startup.defaultPageReady().then(function () { window.fitDisplayMath(); setTimeout(window.fitDisplayMath, 300); }); } }
+      };
+      // Shrink any display equation wider than its column (via font-size, which
+      // actually reflows the math) so it fits on narrow screens.
+      window.fitDisplayMath = function () {
+        document.querySelectorAll('mjx-container[display="true"]').forEach(function (c) {
+          c.style.fontSize = '';
+          var m = c.firstElementChild; if (!m) return;
+          var pw = (c.parentNode && c.parentNode.clientWidth) || 9999;
+          var avail = Math.min(c.clientWidth || 9999, pw);
+          if (avail >= 9999) return;
+          var nat = m.getBoundingClientRect().width;
+          if (nat > avail + 1) { c.style.fontSize = Math.max(45, ((avail - 2) / nat) * 96) + '%'; }
+        });
+      };
+      var _fitT; window.addEventListener('resize', function () { clearTimeout(_fitT); _fitT = setTimeout(window.fitDisplayMath, 120); });
+      window.addEventListener('load', function () { setTimeout(window.fitDisplayMath, 200); });
     </script>
     <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   </body>
