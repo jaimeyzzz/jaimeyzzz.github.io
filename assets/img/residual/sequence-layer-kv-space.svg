@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="620" viewBox="0 0 1080 620" role="img" aria-labelledby="title desc">
+  <title id="title">Sequence and layer information space</title>
+  <desc id="desc">A six-layer local view of historical token states and the current token.</desc>
+  <defs>
+    <style>
+      .title { font: 600 24px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #292521; }
+      .subtitle { font: 13px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #756D66; }
+      .section { font: 600 12px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #5A524C; letter-spacing: .03em; }
+      .tick { font: 12px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #756D66; }
+      .neutral { fill: #FFFEFC; stroke: #D8D0C8; stroke-width: 1.1; }
+      .current { fill: #F2C79F; stroke: #CC8451; stroke-width: 1.2; }
+    </style>
+    <rect id="base-neutral" class="neutral" width="36" height="36" rx="7"/>
+    <rect id="base-current" class="current" width="36" height="36" rx="7"/>
+  </defs>
+
+  <rect width="1080" height="620" fill="#FAF7F2"/>
+  <text x="56" y="48" class="title">Sequence × Layer Information Space</text>
+  <text x="56" y="72" class="subtitle">Each block represents intermediate information stored for one token at one layer.</text>
+
+  <rect x="178" y="108" width="590" height="402" rx="16" fill="#F3F0EB"/>
+  <rect x="796" y="108" width="102" height="402" rx="16" fill="#FBEDDE"/>
+  <text x="473" y="134" text-anchor="middle" class="section">HISTORICAL STATES</text>
+  <text x="847" y="134" text-anchor="middle" class="section">CURRENT TOKEN</text>
+
+  <g class="tick" text-anchor="end">
+    <text x="150" y="174">Layer 1</text><text x="150" y="234">Layer 2</text>
+    <text x="150" y="294">Layer 3</text><text x="150" y="354">Layer 4</text>
+    <text x="150" y="414">Layer 5</text><text x="150" y="474">Layer 6</text>
+  </g>
+  <g class="tick" text-anchor="middle">
+    <text x="250" y="540">t−3</text><text x="386" y="540">t−2</text>
+    <text x="522" y="540">t−1</text><text x="658" y="540">t</text><text x="847" y="540">t+1</text>
+  </g>
+
+  <g transform="translate(232 150)">
+    <use href="#base-neutral" x="0" y="0"/><use href="#base-neutral" x="136" y="0"/><use href="#base-neutral" x="272" y="0"/><use href="#base-neutral" x="408" y="0"/>
+    <use href="#base-neutral" x="0" y="60"/><use href="#base-neutral" x="136" y="60"/><use href="#base-neutral" x="272" y="60"/><use href="#base-neutral" x="408" y="60"/>
+    <use href="#base-neutral" x="0" y="120"/><use href="#base-neutral" x="136" y="120"/><use href="#base-neutral" x="272" y="120"/><use href="#base-neutral" x="408" y="120"/>
+    <use href="#base-neutral" x="0" y="180"/><use href="#base-neutral" x="136" y="180"/><use href="#base-neutral" x="272" y="180"/><use href="#base-neutral" x="408" y="180"/>
+    <use href="#base-neutral" x="0" y="240"/><use href="#base-neutral" x="136" y="240"/><use href="#base-neutral" x="272" y="240"/><use href="#base-neutral" x="408" y="240"/>
+    <use href="#base-neutral" x="0" y="300"/><use href="#base-neutral" x="136" y="300"/><use href="#base-neutral" x="272" y="300"/><use href="#base-neutral" x="408" y="300"/>
+  </g>
+  <g transform="translate(829 150)">
+    <use href="#base-current" x="0" y="0"/><use href="#base-current" x="0" y="60"/>
+    <use href="#base-current" x="0" y="120"/><use href="#base-current" x="0" y="180"/>
+    <use href="#base-current" x="0" y="240"/><use href="#base-current" x="0" y="300"/>
+  </g>
+</svg>

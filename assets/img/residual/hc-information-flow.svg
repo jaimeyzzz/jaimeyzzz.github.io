@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="620" viewBox="0 0 1080 620" role="img" aria-labelledby="title desc">
+  <title id="title">Hyper-Connections with ordinary Transformer blocks and four residual streams</title>
+  <desc id="desc">Normal Transformer blocks remain in every layer. Four auxiliary residual streams pass information between adjacent layers; each block reads from the streams and writes its output back.</desc>
+  <defs>
+    <style>
+      .title{font:600 24px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#292521}.subtitle{font:13px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#756D66}.section{font:600 12px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#5A524C;letter-spacing:.03em}.tick{font:12px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#756D66}.active{font:600 12px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#4F7F68}.cache{fill:#FFFEFC;stroke:#D8D0C8;stroke-width:1.1}.cache-focus{fill:#8DB4C3;stroke:#5E8DA0;stroke-width:1.3}.block{fill:#F1C89E;stroke:#C67D49;stroke-width:1.3}.block-focus{fill:#D99B70;stroke:#9F613A;stroke-width:1.6}.stream{fill:#87B39C;stroke:#4F7F68;stroke-width:1.1}.stream-focus{fill:#65A083;stroke:#3F725B;stroke-width:1.4}.attention{stroke:#7FA2B0;stroke-width:1.35;fill:none;opacity:.48}.attention-focus{stroke:#5E8DA0;stroke-width:1.8;fill:none;opacity:.9}.carry{stroke:#6E9A84;stroke-width:1.5;fill:none}.read{stroke:#5E8DA0;stroke-width:1.6;fill:none}.write{stroke:#B9784A;stroke-width:1.6;fill:none}.read-muted{stroke:#5E8DA0;stroke-width:1.25;fill:none;opacity:.48}.write-muted{stroke:#B9784A;stroke-width:1.25;fill:none;opacity:.48}.muted{opacity:.45}
+    </style>
+    <rect id="hc-cache" class="cache" width="32" height="32" rx="6"/><rect id="hc-cache-focus" class="cache-focus" width="32" height="32" rx="6"/><rect id="hc-block" class="block" width="46" height="36" rx="7"/><rect id="hc-block-focus" class="block-focus" width="50" height="40" rx="8"/><rect id="hc-stream" class="stream" width="20" height="20" rx="4"/><rect id="hc-stream-focus" class="stream-focus" width="20" height="20" rx="4"/>
+    <marker id="hc-carry-tip" markerWidth="5" markerHeight="5" refX="4.5" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#6E9A84"/></marker><marker id="hc-read-tip" markerWidth="5" markerHeight="5" refX="4.5" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#5E8DA0"/></marker><marker id="hc-write-tip" markerWidth="5" markerHeight="5" refX="4.5" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#B9784A"/></marker>
+  </defs>
+
+  <rect width="1080" height="620" fill="#FAF7F2"/>
+  <text x="56" y="48" class="title">Hyper-Connections: Transformer Blocks + n=4 Residual Streams</text>
+  <text x="56" y="72" class="subtitle">Each layer reads from the streams, computes normally, and writes back; residual states propagate layer by layer.</text>
+
+  <rect x="170" y="108" width="400" height="402" rx="16" fill="#F3F0EB"/>
+  <rect x="598" y="108" width="142" height="402" rx="16" fill="#FBEDDE"/>
+  <rect x="770" y="108" width="214" height="402" rx="16" fill="#EAF2ED"/>
+  <text x="370" y="134" text-anchor="middle" class="section">SEQUENCE HISTORY</text>
+  <text x="669" y="134" text-anchor="middle" class="section">TRANSFORMER BLOCK</text>
+  <text x="877" y="134" text-anchor="middle" class="section">4-STREAM RESIDUAL STATE</text>
+
+  <g text-anchor="end"><text x="145" y="174" class="tick">Layer 1</text><text x="145" y="234" class="tick">Layer 2</text><text x="145" y="294" class="tick">Layer 3</text><text x="145" y="354" class="active">Layer 4</text><text x="145" y="414" class="tick">Layer 5</text><text x="145" y="474" class="tick">Layer 6</text></g>
+
+  <g>
+    <path class="attention" d="M252 168 H636" marker-end="url(#hc-read-tip)"/>
+    <path class="attention" d="M252 228 H636" marker-end="url(#hc-read-tip)"/>
+    <path class="attention" d="M252 288 H636" marker-end="url(#hc-read-tip)"/>
+    <path class="attention-focus" d="M252 348 H634" marker-end="url(#hc-read-tip)"/>
+  </g>
+
+  <g transform="translate(220 152)" class="muted">
+    <use href="#hc-cache" x="0" y="0"/><use href="#hc-cache" x="92" y="0"/><use href="#hc-cache" x="184" y="0"/><use href="#hc-cache" x="276" y="0"/>
+    <use href="#hc-cache" x="0" y="60"/><use href="#hc-cache" x="92" y="60"/><use href="#hc-cache" x="184" y="60"/><use href="#hc-cache" x="276" y="60"/>
+    <use href="#hc-cache" x="0" y="120"/><use href="#hc-cache" x="92" y="120"/><use href="#hc-cache" x="184" y="120"/><use href="#hc-cache" x="276" y="120"/>
+    <use href="#hc-cache" x="0" y="180"/><use href="#hc-cache" x="92" y="180"/><use href="#hc-cache" x="184" y="180"/><use href="#hc-cache" x="276" y="180"/>
+    <use href="#hc-cache" x="0" y="240"/><use href="#hc-cache" x="92" y="240"/><use href="#hc-cache" x="184" y="240"/><use href="#hc-cache" x="276" y="240"/>
+    <use href="#hc-cache" x="0" y="300"/><use href="#hc-cache" x="92" y="300"/><use href="#hc-cache" x="184" y="300"/><use href="#hc-cache" x="276" y="300"/>
+  </g>
+  <g transform="translate(220 152)" opacity=".55"><use href="#hc-cache-focus" x="0"/><use href="#hc-cache-focus" x="92"/><use href="#hc-cache-focus" x="184"/><use href="#hc-cache-focus" x="276"/><use href="#hc-cache-focus" x="0" y="60"/><use href="#hc-cache-focus" x="92" y="60"/><use href="#hc-cache-focus" x="184" y="60"/><use href="#hc-cache-focus" x="276" y="60"/><use href="#hc-cache-focus" x="0" y="120"/><use href="#hc-cache-focus" x="92" y="120"/><use href="#hc-cache-focus" x="184" y="120"/><use href="#hc-cache-focus" x="276" y="120"/></g>
+  <g transform="translate(220 332)"><use href="#hc-cache-focus" x="0"/><use href="#hc-cache-focus" x="92"/><use href="#hc-cache-focus" x="184"/><use href="#hc-cache-focus" x="276"/></g>
+
+  <g transform="translate(646 150)">
+    <use href="#hc-block" x="0" y="0"/><use href="#hc-block" x="0" y="60"/><use href="#hc-block" x="0" y="120"/>
+    <use href="#hc-block-focus" x="-2" y="178"/><use href="#hc-block" x="0" y="240" opacity=".55"/><use href="#hc-block" x="0" y="300" opacity=".55"/>
+  </g>
+
+  <g transform="translate(817 158)">
+    <g><use href="#hc-stream" x="0"/><use href="#hc-stream" x="40"/><use href="#hc-stream" x="80"/><use href="#hc-stream" x="120"/></g>
+    <g transform="translate(0 60)"><use href="#hc-stream" x="0"/><use href="#hc-stream" x="40"/><use href="#hc-stream" x="80"/><use href="#hc-stream" x="120"/></g>
+    <g transform="translate(0 120)"><use href="#hc-stream" x="0"/><use href="#hc-stream" x="40"/><use href="#hc-stream" x="80"/><use href="#hc-stream" x="120"/></g>
+    <g transform="translate(0 180)"><use href="#hc-stream-focus" x="0"/><use href="#hc-stream-focus" x="40"/><use href="#hc-stream-focus" x="80"/><use href="#hc-stream-focus" x="120"/></g>
+    <g transform="translate(0 240)" opacity=".6"><use href="#hc-stream" x="0"/><use href="#hc-stream" x="40"/><use href="#hc-stream" x="80"/><use href="#hc-stream" x="120"/></g>
+    <g transform="translate(0 300)" opacity=".6"><use href="#hc-stream" x="0"/><use href="#hc-stream" x="40"/><use href="#hc-stream" x="80"/><use href="#hc-stream" x="120"/></g>
+  </g>
+
+  <g class="carry">
+    <path d="M827 178 V208" marker-end="url(#hc-carry-tip)"/><path d="M867 178 V208" marker-end="url(#hc-carry-tip)"/><path d="M907 178 V208" marker-end="url(#hc-carry-tip)"/><path d="M947 178 V208" marker-end="url(#hc-carry-tip)"/>
+    <path d="M827 238 V268" marker-end="url(#hc-carry-tip)"/><path d="M867 238 V268" marker-end="url(#hc-carry-tip)"/><path d="M907 238 V268" marker-end="url(#hc-carry-tip)"/><path d="M947 238 V268" marker-end="url(#hc-carry-tip)"/>
+    <path d="M827 298 V328" marker-end="url(#hc-carry-tip)"/><path d="M867 298 V328" marker-end="url(#hc-carry-tip)"/><path d="M907 298 V328" marker-end="url(#hc-carry-tip)"/><path d="M947 298 V328" marker-end="url(#hc-carry-tip)"/>
+  </g>
+
+  <path class="write-muted" d="M695 174 C747 190 780 188 808 174" marker-end="url(#hc-write-tip)"/>
+  <path class="read-muted" d="M827 168 C782 184 750 210 701 225" marker-end="url(#hc-read-tip)"/>
+  <path class="write-muted" d="M695 234 C747 250 780 248 808 234" marker-end="url(#hc-write-tip)"/>
+  <path class="read-muted" d="M827 228 C782 244 750 270 701 285" marker-end="url(#hc-read-tip)"/>
+  <path class="write-muted" d="M695 294 C747 310 780 308 808 294" marker-end="url(#hc-write-tip)"/>
+  <path class="read" d="M887 288 C790 288 758 322 706 343" marker-end="url(#hc-read-tip)"/>
+  <path class="write" d="M696 356 C752 376 786 354 808 348" marker-end="url(#hc-write-tip)"/>
+  <text x="766" y="302" class="subtitle">read Aₘ</text><text x="752" y="383" class="subtitle">write B</text>
+  <text x="877" y="548" text-anchor="middle" class="subtitle">Aᵣ carries and mixes streams only between adjacent layers</text>
+</svg>

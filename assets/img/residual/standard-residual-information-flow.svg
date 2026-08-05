@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="620" viewBox="0 0 1080 620" role="img" aria-labelledby="title desc">
+  <title id="title">Standard residual information flow at layer four</title>
+  <desc id="desc">Six transformer layers are shown. At layer four, the current token aggregates historical states from the same layer and combines them with the residual accumulated through layers one to three.</desc>
+  <defs>
+    <linearGradient id="mixed-state" x1="0" x2="1">
+      <stop offset="0" stop-color="#D8905F"/>
+      <stop offset="0.5" stop-color="#D8905F"/>
+      <stop offset="0.5" stop-color="#6F9FB2"/>
+      <stop offset="1" stop-color="#6F9FB2"/>
+    </linearGradient>
+    <filter id="soft-shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="1" stdDeviation="1.5" flood-color="#44372F" flood-opacity="0.10"/>
+    </filter>
+    <style>
+      .title { font: 600 24px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #292521; }
+      .subtitle { font: 13px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #756D66; }
+      .section { font: 600 12px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #5A524C; letter-spacing: .03em; }
+      .tick { font: 12px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #756D66; }
+      .tick-active { font: 600 12px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #A85F35; }
+      .annotation { font: 600 12px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #514943; }
+      .neutral { fill: #FFFEFC; stroke: #D8D0C8; stroke-width: 1.2; }
+      .history { fill: #8DB4C3; stroke: #5E8DA0; stroke-width: 1.4; }
+      .residual { fill: #E7A16F; stroke: #BE7040; stroke-width: 1.4; }
+      .mixed { fill: url(#mixed-state); stroke: #8B6650; stroke-width: 1.6; }
+      .seq-line { stroke: #5E8DA0; stroke-width: 2; fill: none; }
+      .res-line { stroke: #BE7040; stroke-width: 2; fill: none; }
+      .future-line { stroke: #BE7040; stroke-width: 1.5; stroke-dasharray: 4 4; fill: none; opacity: .55; }
+    </style>
+    <rect id="state-neutral" class="neutral" width="36" height="36" rx="7"/>
+    <rect id="state-history" class="history" width="36" height="36" rx="7"/>
+    <rect id="state-residual" class="residual" width="36" height="36" rx="7"/>
+    <rect id="state-mixed" class="mixed" width="42" height="42" rx="8" filter="url(#soft-shadow)"/>
+    <marker id="arrow-blue" markerWidth="6" markerHeight="6" refX="5.5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#5E8DA0"/></marker>
+    <marker id="arrow-orange" markerWidth="6" markerHeight="6" refX="5.5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#BE7040"/></marker>
+  </defs>
+
+  <rect width="1080" height="620" fill="#FAF7F2"/>
+  <text x="56" y="48" class="title">Standard Residual: Local Information Flow</text>
+  <text x="56" y="72" class="subtitle">At layer 4, sequence information is aggregated and added to the incoming residual state.</text>
+
+  <rect x="178" y="108" width="590" height="402" rx="16" fill="#F3F0EB"/>
+  <rect x="796" y="108" width="102" height="402" rx="16" fill="#FBEDDE"/>
+  <text x="473" y="134" text-anchor="middle" class="section">HISTORICAL STATES</text>
+  <text x="847" y="134" text-anchor="middle" class="section">CURRENT TOKEN</text>
+
+  <g text-anchor="end">
+    <text x="150" y="174" class="tick">Layer 1</text>
+    <text x="150" y="234" class="tick">Layer 2</text>
+    <text x="150" y="294" class="tick">Layer 3</text>
+    <text x="150" y="354" class="tick-active">Layer 4</text>
+    <text x="150" y="414" class="tick">Layer 5</text>
+    <text x="150" y="474" class="tick">Layer 6</text>
+  </g>
+
+  <g class="tick" text-anchor="middle">
+    <text x="250" y="540">t−3</text><text x="386" y="540">t−2</text>
+    <text x="522" y="540">t−1</text><text x="658" y="540">t</text><text x="847" y="540">t+1</text>
+  </g>
+
+  <g transform="translate(232 150)">
+    <use href="#state-neutral" x="0" y="0"/><use href="#state-neutral" x="136" y="0"/><use href="#state-neutral" x="272" y="0"/><use href="#state-neutral" x="408" y="0"/>
+    <use href="#state-neutral" x="0" y="60"/><use href="#state-neutral" x="136" y="60"/><use href="#state-neutral" x="272" y="60"/><use href="#state-neutral" x="408" y="60"/>
+    <use href="#state-neutral" x="0" y="120"/><use href="#state-neutral" x="136" y="120"/><use href="#state-neutral" x="272" y="120"/><use href="#state-neutral" x="408" y="120"/>
+    <use href="#state-history" x="0" y="180"/><use href="#state-history" x="136" y="180"/><use href="#state-history" x="272" y="180"/><use href="#state-history" x="408" y="180"/>
+    <use href="#state-neutral" x="0" y="240"/><use href="#state-neutral" x="136" y="240"/><use href="#state-neutral" x="272" y="240"/><use href="#state-neutral" x="408" y="240"/>
+    <use href="#state-neutral" x="0" y="300"/><use href="#state-neutral" x="136" y="300"/><use href="#state-neutral" x="272" y="300"/><use href="#state-neutral" x="408" y="300"/>
+  </g>
+
+  <g transform="translate(232 150)" opacity=".55">
+    <use href="#state-history" x="0" y="0"/><use href="#state-history" x="136" y="0"/><use href="#state-history" x="272" y="0"/><use href="#state-history" x="408" y="0"/>
+    <use href="#state-history" x="0" y="60"/><use href="#state-history" x="136" y="60"/><use href="#state-history" x="272" y="60"/><use href="#state-history" x="408" y="60"/>
+    <use href="#state-history" x="0" y="120"/><use href="#state-history" x="136" y="120"/><use href="#state-history" x="272" y="120"/><use href="#state-history" x="408" y="120"/>
+  </g>
+
+  <g transform="translate(829 150)">
+    <use href="#state-residual" x="0" y="0"/>
+    <use href="#state-residual" x="0" y="60"/>
+    <use href="#state-residual" x="0" y="120"/>
+    <use href="#state-mixed" x="-3" y="177"/>
+    <use href="#state-neutral" x="0" y="240" opacity=".55"/>
+    <use href="#state-neutral" x="0" y="300" opacity=".55"/>
+  </g>
+
+  <line class="res-line" x1="847" y1="186" x2="847" y2="204" marker-end="url(#arrow-orange)"/>
+  <line class="res-line" x1="847" y1="246" x2="847" y2="264" marker-end="url(#arrow-orange)"/>
+  <line class="res-line" x1="847" y1="306" x2="847" y2="321" marker-end="url(#arrow-orange)"/>
+  <path class="seq-line" d="M268 168 H816" marker-end="url(#arrow-blue)" opacity=".5"/>
+  <path class="seq-line" d="M268 228 H816" marker-end="url(#arrow-blue)" opacity=".5"/>
+  <path class="seq-line" d="M268 288 H816" marker-end="url(#arrow-blue)" opacity=".5"/>
+  <path class="seq-line" d="M268 348 H816" marker-end="url(#arrow-blue)"/>
+  <text x="542" y="326" text-anchor="middle" class="annotation">same-layer sequence aggregation</text>
+
+  <text x="917" y="352" class="annotation">combined state</text>
+
+  <g transform="translate(220 580)">
+    <rect class="residual" x="0" y="-15" width="22" height="22" rx="5"/>
+    <text x="31" y="1" class="subtitle">information already accumulated across depth</text>
+    <rect class="history" x="352" y="-15" width="22" height="22" rx="5"/>
+    <text x="383" y="1" class="subtitle">information selected from sequence history</text>
+    <rect class="mixed" x="710" y="-15" width="22" height="22" rx="5"/>
+    <text x="741" y="1" class="subtitle">merged</text>
+  </g>
+</svg>
