@@ -25,7 +25,7 @@ references:
     url: https://arxiv.org/abs/2603.15031
 ---
 
-## 残差连接
+## 1. 残差连接
 
 要谈 attention residuals，得先回到残差连接的源头：*Deep Residual Learning for Image Recognition* {% include cite.html key="resnet" %}。
 
@@ -49,7 +49,7 @@ $$
 
 二是从**网络本身**的角度。我的理解是，模型往往会自然地在不同层分化出不同的功能——有些是人为设定的结构差异（比如把 full attention 层和 linear attention 层混在一起），有些则是网络自己分化的结果。要更好地利用这些不同的功能，就需要视情况去调用不同的层，而这也需要残差连接来支撑。
 
-## Transformer 中的残差连接
+## 2. Transformer 中的残差连接
 
 接下来是 *Attention Is All You Need* {% include cite.html key="transformer" %}。论文中的每个 Transformer block 包含两个子层：一个 Multi-Head Attention 子层和一个 MLP/FFN 子层。每个子层外面各有一次残差连接，因此每个 block 通常会进行两次残差更新。
 
@@ -65,7 +65,7 @@ $$
 
 这里先只需要注意一件事：原始 Transformer 的 LayerNorm 位于残差相加之后。这个看似局部的位置差异，会直接影响残差连接在深层网络中的性质。
 
-## Post-LN 与 Pre-LN
+## 3. Post-LN 与 Pre-LN
 
 *On Layer Normalization in the Transformer Architecture* {% include cite.html key="xiong2020" %} 系统分析了 LayerNorm 位置对 Transformer 训练的影响。论文指出，Post-LN 在初始化时靠近输出层的梯度会比较大，因此往往需要 learning-rate warm-up 来避免训练不稳定；把 LayerNorm 移到子层内部，也就是改成 Pre-LN，则能让梯度在初始化时表现得更稳定。
 
@@ -99,7 +99,7 @@ $$
 
 因此，Post-LN 的问题是长程残差路径不够直接，优化相对不稳定；Pre-LN 修复了这条长程路径，却让所有历史更新以固定权重不断累加，并可能削弱深层对既有表示的改写能力。
 
-## DenseFormer：学习如何组合历史层
+## 4. DenseFormer：学习如何组合历史层
 
 *DenseFormer: Enhancing Information Flow in Transformers via Depth Weighted Averaging* {% include cite.html key="denseformer" %}。它在 Transformer 层之间加入了 Depth Weighted Average（DWA），不再让信息只能沿着相邻 block 一层一层地向后传递。
 
@@ -115,7 +115,7 @@ $$
 
 其实讲到这里，单从残差连接的角度看，这套机制似乎已经足够完整了：不同的 layer 或 block 可以在训练过程中，根据各自的功能和实际需要选择前面不同深度的表示；网络结构对后层输出的抑制效应，似乎也可以借此绕开。那么，后续的 Attention Residuals 又进一步做了什么？
 
-## Attention Residuals：动态选择历史层
+## 5. Attention Residuals：动态选择历史层
 
 到了 *Attention Residuals* {% include cite.html key="attnres" %}，讨论的维度其实已经和前面所说的长程连接稳定性有所不同了。
 
@@ -151,7 +151,7 @@ $$
 
 换一个角度理解，AttnRes 的假设是：每一层要处理的 feature 与历史层信息之间的关系并不是固定的。同一个后续层面对不同 token 时，可能需要调用完全不同深度的表示，因此历史信息不仅应该可以跨层组合，还应该根据当前内容动态组合。
 
-## 一个还没有想明白的问题
+## 6. 一个还没有想明白的问题
 
 但这里似乎又引入了一个“鸡生蛋、蛋生鸡”的问题。
 

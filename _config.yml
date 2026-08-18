@@ -100,6 +100,8 @@ exclude:
   - assets/img/_originals_backup/
   # Dev tooling & local preview output — never ship to the live site.
   - tools/
+  - scripts/
   - .blog_preview/
+  - .preview/
   - __pycache__/
   - vendor/

@@ -201,6 +201,62 @@ img { max-width: 100%; height: auto; display: block; }
   color: var(--text-mute);
 }
 
+.article-toc {
+  margin: 0 0 34px;
+  border: 1px solid var(--hairline);
+  border-radius: 10px;
+  background: var(--bg-tint);
+  font-family: $font-sans;
+  font-size: 14px;
+}
+.article-toc[hidden] { display: none; }
+.article-toc summary {
+  min-height: 44px;
+  padding: 10px 14px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  color: var(--text);
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+}
+.article-toc summary::-webkit-details-marker { display: none; }
+.article-toc summary::after {
+  content: "＋";
+  color: var(--text-faint);
+  font-weight: 400;
+  margin-left: auto;
+}
+.article-toc[open] summary::after { content: "−"; }
+.article-toc__count {
+  color: var(--text-faint);
+  font-family: $font-mono;
+  font-size: 12px;
+  font-weight: 400;
+}
+.article-toc nav { border-top: 1px solid var(--hairline); }
+.article-toc__list,
+.article-toc__children {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.article-toc__list { padding: 10px 14px 12px; }
+.article-toc__children { padding-left: 18px; }
+.article-toc__item { margin: 0; }
+.article-toc__item a {
+  display: block;
+  padding: 5px 0;
+  color: var(--text-mute);
+  line-height: 1.45;
+}
+.article-toc__item--h2 > a { color: var(--text); font-weight: 600; }
+.article-toc__item--h3 > a::before { content: "↳"; margin-right: 7px; color: var(--text-faint); }
+.article-toc__item a:hover { color: var(--accent); }
+
 .article__body { font-size: 20px; }
 .article__body > *:first-child { margin-top: 0; }
 
@@ -218,6 +274,8 @@ img { max-width: 100%; height: auto; display: block; }
   font-size: 22px;
   margin: 32px 0 8px;
 }
+.article__body h2,
+.article__body h3 { scroll-margin-top: 24px; }
 .article__body p { margin: 0 0 1.2em; }
 .article__body ul, .article__body ol { margin: 0 0 1.2em; padding-left: 1.4em; }
 .article__body li { margin-bottom: .35em; }
@@ -437,6 +495,9 @@ sup.cite a:hover { color: var(--accent-strong); }
   .article__title { font-size: 30px; }
   .article__body { font-size: 18px; }
   .post-list__title { font-size: 22px; }
+  .article-toc { margin-bottom: 28px; }
+  .article-toc__list { padding: 8px 14px 12px; }
+  .article-toc__item a { padding: 7px 0; }
 }
 
 /* Gentle entrance */

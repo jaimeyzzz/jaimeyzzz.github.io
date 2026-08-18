@@ -13,5 +13,9 @@ _drafts/
 .blog_preview/
 .secrets/
 __pycache__/
-# Local preview tooling — kept out of the public repo (contains infra notes).
-tools/
+# Keep private preview infrastructure notes local, but version the reusable code.
+tools/*
+!tools/preview/
+tools/preview/*
+!tools/preview/render.py
+!tools/preview/server.py

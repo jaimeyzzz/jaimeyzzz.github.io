@@ -29,7 +29,7 @@ references:
     url: https://arxiv.org/abs/2510.26692
 ---
 
-## Linear Attention
+## 1. Linear Attention
 
 线性注意力最早的工作之一，是 *Transformers are RNNs* {% include cite.html key="katharopoulos2020" %}。它的出发点是对标准注意力做变换以节省计算。
 
@@ -86,7 +86,7 @@ $$
 
 如果 $\phi$ 只是逐元素地作用在每个分量上，那么 $d_\phi=d$——二维就是 $d_\phi=2$，只能容纳两个正交的 one-hot（正如上图）；但 $\phi$ 也可以设计得更复杂，把 $d_\phi$ 抬上去，从而容纳更多清晰的分支。而"把 $\phi$ 设计得更复杂"这条思路，也正是 Performer {% include cite.html key="performer" %}、cosFormer {% include cite.html key="cosformer" %} 这些后续改进的出发点，想办法把这个 rank 重新做大一些来补偿一些表达能力。所以这条认知，一定程度上可以被印证。
 
-## Delta Rule
+## 2. Delta Rule
 
 *Linear Transformers Are Secretly Fast Weight Programmers* {% include cite.html key="schlag2021" %}。
 
@@ -104,7 +104,7 @@ $\beta_t$ 是这一步修正的强度（写入的学习率）。
 
 但这种假定也只是一种在实践序列上的补偿，相比原本的attention并不能真的补全所有的能力，毕竟天下没有免费的午餐。首先，这个假定带来了对时间轴上相同key不同value的的平衡。比如对相同的 key，远近并不总意味着重要性的高低——这种关联性很可能是视情况而定，那么这里的这种策略能够去自动平衡这种权重。但是呢，其实每个不同的时间轴上的q，对这里的key的关注可能也是不一样的，比如有的q可能更关注近的，有的q更关注远的，这种补偿也并不能解决这个问题，还是产生了表达能力的限制。那么这里没有学好的这种知识，会在别的地方发生代偿，或者说需要更大的网络或者其他的结构来补充这里丢失的关联性。
 
-## Gated DeltaNet
+## 3. Gated DeltaNet
 
 *Gated Delta Networks: Improving Mamba2 with Delta Rule* {% include cite.html key="gateddeltanet" %} 的核心，是在 DeltaNet 上增加一个 forget gate：由于固定大小的状态矩阵 $S$ 会不断压入历史信息，旧知识容易相互混杂、产生干扰，并最终造成状态饱和，因此模型根据当前输入动态预测 $\alpha_t$，对历史状态进行衰减，再通过 $\beta_t$ 和当前的 $k_t$ 对相应的映射进行局部修正。
 
@@ -117,7 +117,7 @@ $$
 
 它本质上还是是对"固定状态压缩"这一缺陷的一种"缝缝补补"：提供一个输入相关的遗忘策略，帮助释放容量、减少旧信息的干扰。但这种选择性，主要是"什么时候遗忘、遗忘多少"——它并不能精确地选中状态里的某一条历史记忆，也没有解决"无法重新访问原始历史 token"这个根本限制，相反地，相比于原本的delta rule，由于这个门显然是不对称的，它总是倾向于忘记历史而不会选择忘记最近的事情，所以它也会倾向于记住更近处的情况，忘掉远处的情况，这也是人为引入的一种归纳偏置。
 
-## KDA
+## 4. KDA
 
 *Kimi Linear: An Expressive, Efficient Attention Architecture* {% include cite.html key="kimilinear" %} 提出了 Kimi Delta Attention（KDA）。它从基础 linear attention 的直接累加 $S_t=S_{t-1}+k_tv_t^\top$ 出发，先用 delta rule 改为按预测误差修正当前的 key–value 映射，再在 Gated DeltaNet「全局标量遗忘门」的基础上，把 $\alpha_t$ 从一个标量扩展成逐 key-feature 维度的向量门——
 
@@ -131,7 +131,7 @@ KDA 仍然是在固定大小的状态 $S$ 上做改进。历史信息被持续�
 
 但说到底，它仍然是一种更细粒度的缝补与信息补充：仍不能像标准 attention 那样重新访问任意的原始历史 token，也无法真正按照未来的 query，精确地选中某一条历史记忆。前述的两个问题，一个是q的关注问题，一个是遗忘的归纳偏置问题也都是存在的。
 
-## 总结
+## 5. 总结
 
 起点是一个简化：把注意力里的相似度换成特征映射的内积 $\mathrm{sim}(q,k)=\phi(q)^\top\phi(k)$。用结合律改用一个固定大小的状态 $S=\sum_{j}\phi(k_j)v_j^\top$ 去取代 $O(N^2)$ 的显式注意力。
 

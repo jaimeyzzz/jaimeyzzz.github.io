@@ -43,6 +43,16 @@
         <aside class="disclaimer">我不是这个领域的专家，也谈不上真懂，这里写的不一定正确。我只是在用费曼学习法：一边读 paper 学习，一边把思路完整地展开讲清楚，借此搭建自己的直觉，并随着新的进展不断修正它。</aside>
         {% endif %}
 
+        <details class="article-toc" id="article-toc" hidden>
+          <summary>
+            <span>文章目录</span>
+            <span class="article-toc__count"></span>
+          </summary>
+          <nav aria-label="文章目录">
+            <ol class="article-toc__list"></ol>
+          </nav>
+        </details>
+
         <div class="article__body">
           {{ content }}
         </div>
@@ -135,6 +145,8 @@
       gtag('config', '{{ site.google_analytics }}');
     </script>
     {% endif %}
+
+    <script defer src="/assets/js/blog-toc.js"></script>
 
     {% comment %} MathJax — renders $…$ inline and $$…$$ display math {% endcomment %}
     <script>
