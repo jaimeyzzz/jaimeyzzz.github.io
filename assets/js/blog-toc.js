@@ -18,8 +18,9 @@
 
   function buildToc() {
     var toc = document.getElementById("article-toc");
+    var backButton = document.getElementById("back-to-toc");
     var body = document.querySelector(".article__body");
-    if (!toc || !body) return;
+    if (!toc || !backButton || !body) return;
 
     var headings = Array.prototype.slice.call(body.querySelectorAll("h2, h3"));
     if (headings.length < 2) return;
@@ -53,6 +54,19 @@
     });
     count.textContent = headings.length + " 节";
     toc.hidden = false;
+
+    function updateBackButton() {
+      var passedToc = toc.getBoundingClientRect().bottom < 16;
+      backButton.hidden = !passedToc;
+    }
+    backButton.addEventListener("click", function () {
+      toc.open = true;
+      var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      toc.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+    });
+    window.addEventListener("scroll", updateBackButton, { passive: true });
+    window.addEventListener("resize", updateBackButton);
+    updateBackButton();
 
     var desktop = window.matchMedia("(min-width: 641px)");
     function matchLayout(event) {

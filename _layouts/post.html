@@ -78,6 +78,10 @@
           <a class="back-link" href="/blog/">Back to all posts</a>
         </footer>
       </article>
+      <button class="back-to-toc" id="back-to-toc" type="button" hidden aria-label="返回文章目录">
+        <span aria-hidden="true">↑</span>
+        <span>目录</span>
+      </button>
 
       {% if site.giscus_repo_id != "" and site.giscus_category_id != "" and page.comments != false %}
       <section class="comments">

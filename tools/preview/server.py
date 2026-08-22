@@ -149,7 +149,8 @@ def _article(css, meta, body, date, is_draft, base="/", slug=""):
             f'<ol class="article-toc__list"></ol></nav></details>'
             f'<div class="article__body">{body_html}</div>{references_html}{tags_html}'
             f'<footer class="article__footer"><a class="back-link" href="./">Back to all posts</a></footer>'
-            f'</article>')
+            f'</article><button class="back-to-toc" id="back-to-toc" type="button" hidden '
+            f'aria-label="返回文章目录"><span aria-hidden="true">↑</span><span>目录</span></button>')
     return SHELL.format(base=base, title=title + " · preview", css=css, banner=banner, body=body, mathjax=MATHJAX)
 
 
