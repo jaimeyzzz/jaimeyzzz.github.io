@@ -41,7 +41,7 @@ SHELL = """<!DOCTYPE html><html lang="zh"><head>
 <style>body::after{{content:"LOCAL PREVIEW";position:fixed;bottom:10px;right:12px;
 font-family:sans-serif;font-size:10px;letter-spacing:.15em;color:var(--text-faint);
 border:1px solid var(--border);border-radius:999px;padding:3px 9px;opacity:.7}}</style>
-</head><body>{banner}<div class="page">{body}</div><script defer src="assets/js/blog-toc.js"></script>{mathjax}</body></html>"""
+</head><body>{banner}<div class="page">{body}</div><script defer src="/assets/js/blog-toc.js"></script>{mathjax}</body></html>"""
 
 
 def collect():
