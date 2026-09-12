@@ -10,8 +10,8 @@ layout: homepage
     <figure class="work-figure">
     <div class="fig-num">Fig. 01</div>
     <picture>
-      <source srcset="./assets/img/lumi-summer.webp" type="image/webp">
-      <img src="./assets/img/lumi-summer.jpg" alt="Lumi — Summer Live Show official artwork, miHoYo" loading="lazy" decoding="async">
+      <source srcset="./assets/img/lumi-summer-480.webp 480w, ./assets/img/lumi-summer-720.webp 720w, ./assets/img/lumi-summer.webp 1052w" sizes="(max-width: 720px) calc(100vw - 42px), (max-width: 860px) calc(100vw - 66px), 539px" type="image/webp">
+      <img src="./assets/img/lumi-summer.jpg" width="1052" height="592" alt="Lumi — Summer Live Show official artwork, miHoYo" loading="lazy" decoding="async">
     </picture>
     <figcaption>
       <span><em>Lumi</em> — 夏日时光放映会 · live show</span>
@@ -25,8 +25,8 @@ layout: homepage
       <figure class="work-figure">
       <div class="fig-num">Fig. 02</div>
       <picture>
-        <source srcset="./assets/img/lumi-moon.avif" type="image/avif">
-        <img src="./assets/img/lumi-moon.jpg" alt="Lumi — official Mid-Autumn artwork, miHoYo digital human" loading="lazy" decoding="async">
+        <source srcset="./assets/img/lumi-moon-480.avif 480w, ./assets/img/lumi-moon-720.avif 720w, ./assets/img/lumi-moon.avif 1052w" sizes="(max-width: 720px) calc(100vw - 42px), (max-width: 860px) calc(100vw - 66px), 337px" type="image/avif">
+        <img src="./assets/img/lumi-moon.jpg" width="1052" height="592" alt="Lumi — official Mid-Autumn artwork, miHoYo digital human" loading="lazy" decoding="async">
       </picture>
       <figcaption>
         <span><em>Lumi</em> — 寄明月 · CFX</span>
@@ -38,10 +38,8 @@ layout: homepage
     <figure class="work-figure work-figure--alpha">
       <div class="fig-num">Fig. 03</div>
       <picture>
-        <source media="(max-width: 720px)" type="image/webp" srcset="./assets/img/shenhe-960.webp">
-        <source media="(max-width: 720px)" srcset="./assets/img/shenhe-960.png">
-        <source type="image/webp" srcset="./assets/img/shenhe.webp">
-        <img src="./assets/img/shenhe.png" alt="Shenhe — new outfit promotional art" loading="lazy" decoding="async">
+        <source type="image/webp" srcset="./assets/img/shenhe-480.webp 480w, ./assets/img/shenhe-720.webp 720w, ./assets/img/shenhe-960.webp 960w, ./assets/img/shenhe.webp 1600w" sizes="(max-width: 720px) calc(100vw - 42px), (max-width: 860px) calc(100vw - 66px), 337px">
+        <img src="./assets/img/shenhe-960.png" width="960" height="614" alt="Shenhe — new outfit promotional art" loading="lazy" decoding="async">
       </picture>
       <figcaption>
         <span><em>Shenhe</em> — 冷花幽露 · character animation</span>
