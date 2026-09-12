@@ -631,19 +631,18 @@ html {
 .work-figure--alpha:hover picture { border-color: var(--accent); }
 
 /* Linked figure variant: the whole card is a clickable bilibili link */
-a.work-figure--link {
+.work-figure-link {
   text-decoration: none;
   color: inherit;
-  display: flex;
-  flex-direction: column;
+  display: block;
   transition: transform 0.2s ease;
 }
-a.work-figure--link figcaption span:last-child {
+.work-figure-link figcaption span:last-child {
   color: var(--accent);
   letter-spacing: 0.04em;
 }
-a.work-figure--link:hover { color: inherit; }
-a.work-figure--link:hover figcaption span:last-child {
+.work-figure-link:hover { color: inherit; }
+.work-figure-link:hover figcaption span:last-child {
   color: var(--accent-strong);
 }
 
@@ -744,7 +743,7 @@ a.work-figure--link:hover figcaption span:last-child {
   grid-template-columns: 1fr 1fr;
   gap: 28px;
 }
-.services__group h4 {
+.services__group h3 {
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.12em;

@@ -3,7 +3,7 @@
 
 <div class="services">
   <div class="services__group">
-    <h4>Conference Reviewer</h4>
+    <h3>Conference Reviewer</h3>
     <ul class="services__list">
       <li>SIGGRAPH North America</li>
       <li>SIGGRAPH Asia</li>
@@ -12,7 +12,7 @@
     </ul>
   </div>
   <div class="services__group">
-    <h4>Journal Reviewer</h4>
+    <h3>Journal Reviewer</h3>
     <ul class="services__list">
       <li><a href="https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=2945" target="_blank" rel="noopener">IEEE Transactions on Visualization and Computer Graphics (TVCG)</a></li>
       <li><a href="https://cg.cs.tsinghua.edu.cn/cvmj/" target="_blank" rel="noopener">Computational Visual Media (CVM)</a></li>

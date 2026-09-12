@@ -6,7 +6,8 @@ layout: homepage
 <h2 class="section__title" data-num="I">Industry · miHoYo</h2>
 
 <div class="showcase">
-  <a class="work-figure work-figure--link showcase__main" href="https://www.bilibili.com/video/BV1LV4y1b7ba" target="_blank" rel="noopener">
+  <a class="work-figure-link showcase__main" href="https://www.bilibili.com/video/BV1LV4y1b7ba" target="_blank" rel="noopener">
+    <figure class="work-figure">
     <div class="fig-num">Fig. 01</div>
     <picture>
       <source srcset="./assets/img/lumi-summer.webp" type="image/webp">
@@ -16,10 +17,12 @@ layout: homepage
       <span><em>Lumi</em> — 夏日时光放映会 · live show</span>
       <span>▷ bilibili</span>
     </figcaption>
+    </figure>
   </a>
 
   <div class="showcase__side">
-    <a class="work-figure work-figure--link" href="https://www.bilibili.com/video/BV1GH4y1Z7yS" target="_blank" rel="noopener">
+    <a class="work-figure-link" href="https://www.bilibili.com/video/BV1GH4y1Z7yS" target="_blank" rel="noopener">
+      <figure class="work-figure">
       <div class="fig-num">Fig. 02</div>
       <picture>
         <source srcset="./assets/img/lumi-moon.avif" type="image/avif">
@@ -29,6 +32,7 @@ layout: homepage
         <span><em>Lumi</em> — 寄明月 · CFX</span>
         <span>▷ bilibili</span>
       </figcaption>
+      </figure>
     </a>
 
     <figure class="work-figure work-figure--alpha">
