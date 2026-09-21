@@ -36,12 +36,13 @@ SHELL = """<!DOCTYPE html><html lang="zh"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <base href="{base}">
 <title>{title}</title>
+<link rel="icon" href="data:,">
 <link rel="stylesheet" href="assets/css/font.css">
 <style>{css}</style>
 <style>body::after{{content:"LOCAL PREVIEW";position:fixed;bottom:10px;right:12px;
 font-family:sans-serif;font-size:10px;letter-spacing:.15em;color:var(--text-faint);
 border:1px solid var(--border);border-radius:999px;padding:3px 9px;opacity:.7}}</style>
-</head><body>{banner}<div class="page">{body}</div><script defer src="/assets/js/blog-toc.js"></script>{mathjax}</body></html>"""
+</head><body>{banner}<div class="page">{body}</div><script defer src="assets/js/blog-toc.js"></script>{mathjax}</body></html>"""
 
 
 def collect():
@@ -194,7 +195,12 @@ class Handler(BaseHTTPRequestHandler):
             if fp.startswith(ROOT) and os.path.isfile(fp):
                 ctype = mimetypes.guess_type(fp)[0] or "application/octet-stream"
                 with open(fp, "rb") as f:
-                    return self._send(200, f.read(), ctype)
+                    data = f.read()
+                if prefix and path == "/assets/css/font.css":
+                    data = data.decode("utf-8").replace(
+                        "url(/assets/", f"url({prefix}/assets/"
+                    )
+                return self._send(200, data, ctype)
         if path.startswith("/zhihu/"):
             relative = path.removeprefix("/zhihu/")
             root = os.path.join(ROOT, ".preview", "zhihu")
