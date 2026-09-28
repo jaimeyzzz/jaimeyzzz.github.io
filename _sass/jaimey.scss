@@ -132,6 +132,15 @@ html {
   padding: 0 32px;
 }
 
+@media (min-width: 1200px) {
+  .wrap {
+    width: 86vw;
+    max-width: 2400px;
+    padding-right: clamp(40px, 3vw, 64px);
+    padding-left: clamp(40px, 3vw, 64px);
+  }
+}
+
 /* Editorial chapter break: hairline + Roman numeral + italic serif title */
 .section {
   padding: 72px 0 16px;
@@ -379,7 +388,7 @@ html {
 }
 .highlight {
   display: grid;
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: clamp(300px, 28%, 420px) minmax(0, 1fr);
   gap: 24px;
   padding: 18px;
   background: var(--surface);

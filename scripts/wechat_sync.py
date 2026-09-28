@@ -306,6 +306,36 @@ def extract_article(page_path, source_url, formula_directory):
         formula.replace_with(placeholder)
         formulas.append(output)
 
+    inline_pattern = re.compile(r"(?<!\\)\$(?!\$)(.+?)(?<!\\)\$")
+    inline_index = 0
+    text_nodes = list(content.find_all(string=lambda value: "$" in value))
+    for text_node in text_nodes:
+        if text_node.parent and text_node.parent.name in {"code", "pre", "script", "style"}:
+            continue
+        matches = list(inline_pattern.finditer(str(text_node)))
+        if not matches:
+            continue
+        replacements = []
+        cursor = 0
+        for match in matches:
+            if match.start() > cursor:
+                replacements.append(str(text_node)[cursor:match.start()])
+            inline_index += 1
+            output = formula_directory / f"inline-formula-{inline_index}.png"
+            render_formula(match.group(1), output)
+            placeholder = soup.new_tag("img")
+            placeholder["data-local-image"] = str(output)
+            placeholder["data-inline-formula"] = "true"
+            placeholder["alt"] = match.group(1).strip()
+            replacements.append(placeholder)
+            formulas.append(output)
+            cursor = match.end()
+        if cursor < len(str(text_node)):
+            replacements.append(str(text_node)[cursor:])
+        for replacement in reversed(replacements):
+            text_node.insert_after(replacement)
+        text_node.extract()
+
     svg_colors = {
         "var(--text)": "#2b2926",
         "var(--text-faint)": "#9a9289",
@@ -365,6 +395,9 @@ def extract_article(page_path, source_url, formula_directory):
     for tag_name, style in styles.items():
         for tag in content.select(tag_name):
             tag["style"] = style
+
+    for formula in content.select("img[data-inline-formula]"):
+        formula["style"] = "display:inline-block;height:1.25em;width:auto;margin:0 0.08em;vertical-align:-0.22em;"
 
     for item in content.select("p.wechat-bullet-item"):
         item["style"] = "margin:4px 0;line-height:1.8;"
