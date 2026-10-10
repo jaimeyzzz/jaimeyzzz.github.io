@@ -4,10 +4,6 @@
 <ol class="pubs">
 {% for p in site.data.publications.main %}
   <li class="pub">
-    <div class="pub__media">
-      {% if p.image %}<img src="{{ p.image }}" alt="{{ p.title }}" loading="lazy" decoding="async">{% endif %}
-      {% if p.conference_short %}<span class="pub__badge">{{ p.conference_short }}</span>{% endif %}
-    </div>
     <div class="pub__body">
       <h3 class="pub__title">
         {% if p.pdf %}<a href="{{ p.pdf }}" target="_blank" rel="noopener">{{ p.title }}</a>{% else %}{{ p.title }}{% endif %}

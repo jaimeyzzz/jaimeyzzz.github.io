@@ -111,15 +111,7 @@ html {
 }
 ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
-/* Gentle rise-in on first load so the page feels composed, not built */
-@keyframes hero-rise {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.hero      { animation: hero-rise 0.55s 0.05s ease both; }
-.showcase  { animation: hero-rise 0.65s 0.20s ease both; }
 @media (prefers-reduced-motion: reduce) {
-  .hero, .showcase { animation: none; }
   .work-figure img,
   .highlight__media img, .pub__media img { transition: none !important; }
 }
@@ -497,9 +489,6 @@ html {
   color: var(--text-faint);
   padding-top: 6px;
 }
-
-/* The card structure is preserved for the data, but the thumbnail is hidden */
-.pub__media { display: none; }
 
 .pub__body { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
 .pub__title {
