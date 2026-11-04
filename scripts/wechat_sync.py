@@ -99,17 +99,24 @@ def generated_path(post):
     return ROOT / "_site" / year / month / day / f"{slug}.html"
 
 
-def trim_image(path):
+def trim_image(path, padding=24):
     image = Image.open(path).convert("RGB")
     background = Image.new("RGB", image.size, "white")
     difference = ImageChops.difference(image, background)
     box = difference.getbbox()
     if box:
         image = image.crop(box)
-    padding = 24
     canvas = Image.new("RGB", (image.width + padding * 2, image.height + padding * 2), "white")
     canvas.paste(image, (padding, padding))
     canvas.save(path, optimize=True)
+
+
+def resize_image_height(path, target_height):
+    image = Image.open(path).convert("RGB")
+    target_width = max(1, round(image.width * target_height / image.height))
+    image = image.resize((target_width, target_height), Image.Resampling.LANCZOS)
+    image.save(path, optimize=True)
+    return target_width, target_height
 
 
 def mixed_fonts(cjk_path, latin_path, size):
@@ -192,7 +199,7 @@ def generate_cover(title, output):
     image.save(output, optimize=True)
 
 
-def render_formula(source, output):
+def render_formula(source, output, inline=False):
     formula = source.strip()
     formula = re.sub(r"^\$\$|\$\$$", "", formula).strip()
     has_unicode = any(ord(character) > 127 for character in formula)
@@ -225,7 +232,13 @@ def render_formula(source, output):
         )
         output.parent.mkdir(parents=True, exist_ok=True)
         output.write_bytes((temporary_path / "formula.png").read_bytes())
-    trim_image(output)
+    trim_image(output, padding=2 if inline else 24)
+    if inline:
+        # WeChat may discard relative CSS sizing on inline images. Keep the
+        # uploaded bitmap close to the text line height as a safe fallback.
+        return resize_image_height(output, 20)
+    with Image.open(output) as image:
+        return image.size
 
 
 def extract_article(page_path, source_url, formula_directory):
@@ -322,11 +335,13 @@ def extract_article(page_path, source_url, formula_directory):
                 replacements.append(str(text_node)[cursor:match.start()])
             inline_index += 1
             output = formula_directory / f"inline-formula-{inline_index}.png"
-            render_formula(match.group(1), output)
+            width, height = render_formula(match.group(1), output, inline=True)
             placeholder = soup.new_tag("img")
             placeholder["data-local-image"] = str(output)
             placeholder["data-inline-formula"] = "true"
             placeholder["alt"] = match.group(1).strip()
+            placeholder["width"] = str(width)
+            placeholder["height"] = str(height)
             replacements.append(placeholder)
             formulas.append(output)
             cursor = match.end()
@@ -397,7 +412,12 @@ def extract_article(page_path, source_url, formula_directory):
             tag["style"] = style
 
     for formula in content.select("img[data-inline-formula]"):
-        formula["style"] = "display:inline-block;height:1.25em;width:auto;margin:0 0.08em;vertical-align:-0.22em;"
+        width = formula.get("width")
+        height = formula.get("height")
+        formula["style"] = (
+            f"display:inline-block;width:{width}px;height:{height}px;max-width:none;"
+            "margin:0 0.08em;vertical-align:-0.22em;"
+        )
 
     for item in content.select("p.wechat-bullet-item"):
         item["style"] = "margin:4px 0;line-height:1.8;"
@@ -409,7 +429,7 @@ def extract_article(page_path, source_url, formula_directory):
         item["style"] = "margin:2px 0;line-height:1.55;font-size:14px;word-break:break-word;"
 
     for tag in content.find_all(True):
-        allowed = {"href", "src", "alt", "style", "data-local-image"}
+        allowed = {"href", "src", "alt", "style", "width", "height", "data-local-image"}
         tag.attrs = {key: value for key, value in tag.attrs.items() if key in allowed}
     return content, formulas
 
