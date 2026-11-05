@@ -65,9 +65,6 @@ def prepare_content(page_path, source_url, site_url, public_asset_dir, public_as
         raise RuntimeError("Generated page has no .article__body element.")
 
     content = BeautifulSoup("<article></article>", "lxml").article
-    disclaimer = soup.select_one(".disclaimer")
-    if disclaimer:
-        content.append(BeautifulSoup(str(disclaimer), "lxml").body.contents[0])
     for child in list(article_body.contents):
         content.append(child)
     references = soup.select_one(".references")

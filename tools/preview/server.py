@@ -27,7 +27,7 @@ import markdown
 from render import (
     ROOT, compile_css, parse_doc, date_from_filename, slugify,
     render_markdown, MATHJAX, blog_config,
-    process_citations, render_references, disclaimer_html,
+    process_citations, render_references,
 )
 
 PORT = int(sys.argv[1]) if len(sys.argv) > 1 else 8811
@@ -144,7 +144,6 @@ def _article(css, meta, body, date, is_draft, base="/", slug=""):
             f'<article class="article"><header class="article__header">'
             f'<div class="article__meta">{meta_line}</div>'
             f'<h1 class="article__title">{title}</h1>{lead_html}{zhihu}</header>'
-            f'{disclaimer_html(meta)}'
             f'<details class="article-toc" id="article-toc" hidden><summary><span>文章目录</span>'
             f'<span class="article-toc__count"></span></summary><nav aria-label="文章目录">'
             f'<ol class="article-toc__list"></ol></nav></details>'

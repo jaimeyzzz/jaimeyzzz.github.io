@@ -248,9 +248,6 @@ def extract_article(page_path, source_url, formula_directory):
         raise RuntimeError("Generated page has no .article__body element.")
 
     content = BeautifulSoup("<section></section>", "lxml").section
-    disclaimer = soup.select_one(".disclaimer")
-    if disclaimer:
-        content.append(BeautifulSoup(str(disclaimer), "lxml").body.contents[0])
     for child in list(body.contents):
         content.append(child)
     references = soup.select_one(".references")

@@ -48,17 +48,6 @@ def render_markdown(text):
     return markdown.markdown(text, extensions=MD_EXTS, extension_configs=MD_CFG)
 
 
-# Top-of-post disclaimer, mirrored from _layouts/post.html (keep the text in sync).
-_DISCLAIMER = ('<aside class="disclaimer">我不是这个领域的专家，也谈不上真懂，'
-               '这里写的不一定正确。我只是在用费曼学习法：一边读 paper 学习，'
-               '一边把思路完整地展开讲清楚，借此搭建自己的直觉，'
-               '并随着新的进展不断修正它。</aside>')
-
-
-def disclaimer_html(meta):
-    return "" if (meta or {}).get("disclaimer") is False else _DISCLAIMER
-
-
 def blog_config():
     """(blog_title, blog_tagline) from _config.yml, so previews match the live site."""
     cfg = {}
@@ -185,7 +174,6 @@ PAGE_TMPL = """<!DOCTYPE html>
       <h1 class="article__title">{title}</h1>
       {lead}
     </header>
-    {disclaimer}
     <div class="article__body">
 {body}
     </div>
@@ -248,7 +236,7 @@ def render_item(meta, body, css, fonts, blog_title, is_draft, date):
     return PAGE_TMPL.format(
         title=title, fonts=fonts, css=css, banner=banner, blog_title=html.escape(blog_title),
         meta=meta_line, lead=lead_html, body=body_html, tags=tags_html, mathjax=MATHJAX,
-        references=references_html, disclaimer=disclaimer_html(meta),
+        references=references_html,
     )
 
 
