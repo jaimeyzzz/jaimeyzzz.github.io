@@ -1,14 +1,11 @@
 #!/usr/bin/env python3
 
 import argparse
-import base64
 import html
-import mimetypes
 import re
-import shutil
 import sys
 from pathlib import Path
-from urllib.parse import urljoin
+from urllib.parse import quote, urljoin
 
 from bs4 import BeautifulSoup
 
@@ -42,28 +39,119 @@ def built_page(path):
     return ROOT / "_site" / year / month / day / f"{slug}.html", slug
 
 
-def data_uri(path):
-    mime = mimetypes.guess_type(path.name)[0] or "application/octet-stream"
-    encoded = base64.b64encode(path.read_bytes()).decode("ascii")
-    return f"data:{mime};base64,{encoded}"
+def formula_source(value):
+    formula = value.strip()
+    formula = re.sub(r"^\$\$|\$\$$", "", formula).strip()
+    return formula
 
 
-def prepare_content(page_path, source_url, site_url, asset_dir):
-    content, _ = wechat_sync.extract_article(page_path, source_url, asset_dir)
+def equation_image(soup, formula, block=False):
+    image = soup.new_tag("img")
+    image["eeimg"] = "2" if block else "1"
+    image["class"] = ["ee_img", "tr_noresize"]
+    image["src"] = f"https://www.zhihu.com/equation?tex={quote(formula, safe='')}"
+    image["alt"] = formula.replace("\n", " ")
+    if block:
+        image["style"] = "display:block;max-width:100%;height:auto;margin:18px auto;"
+    else:
+        image["style"] = "display:inline;max-width:100%;height:auto;margin:0 0.08em;vertical-align:middle;"
+    return image
+
+
+def prepare_content(page_path, source_url, site_url, public_asset_dir, public_asset_url):
+    soup = BeautifulSoup(page_path.read_text(encoding="utf-8"), "lxml")
+    article_body = soup.select_one(".article__body")
+    if article_body is None:
+        raise RuntimeError("Generated page has no .article__body element.")
+
+    content = BeautifulSoup("<article></article>", "lxml").article
+    disclaimer = soup.select_one(".disclaimer")
+    if disclaimer:
+        content.append(BeautifulSoup(str(disclaimer), "lxml").body.contents[0])
+    for child in list(article_body.contents):
+        content.append(child)
+    references = soup.select_one(".references")
+    if references:
+        content.append(BeautifulSoup(str(references), "lxml").body.contents[0])
+
     counts = {"formula": 0, "figure": 0, "image": 0}
 
-    for image in content.select("img"):
-        local = image.attrs.pop("data-local-image", None)
-        if local:
-            path = Path(local)
-            image["src"] = data_uri(path)
-            image["data-embedded"] = "true"
-            if path.name.startswith(("formula-", "inline-formula-")):
-                counts["formula"] += 1
-            elif path.name.startswith("figure-"):
-                counts["figure"] += 1
-            continue
+    for citation in content.select("sup.cite"):
+        number = citation.get_text(strip=True)
+        replacement = soup.new_tag("sup")
+        replacement.string = f"[{number}]"
+        citation.replace_with(replacement)
 
+    reference_heading = content.select_one(".references h2")
+    if reference_heading:
+        reference_heading.string = "参考文献"
+
+    for formula in list(content.select(".kdmath")):
+        source = formula_source(formula.get_text())
+        paragraph = soup.new_tag("p")
+        paragraph.append(equation_image(soup, source, block=True))
+        formula.replace_with(paragraph)
+        counts["formula"] += 1
+
+    inline_pattern = re.compile(r"(?<!\\)\$(?!\$)(.+?)(?<!\\)\$")
+    text_nodes = list(content.find_all(string=lambda value: "$" in value))
+    for text_node in text_nodes:
+        if text_node.parent and text_node.parent.name in {"code", "pre", "script", "style"}:
+            continue
+        matches = list(inline_pattern.finditer(str(text_node)))
+        if not matches:
+            continue
+        replacements = []
+        cursor = 0
+        for match in matches:
+            if match.start() > cursor:
+                replacements.append(str(text_node)[cursor:match.start()])
+            replacements.append(equation_image(soup, match.group(1).strip(), block=False))
+            counts["formula"] += 1
+            cursor = match.end()
+        if cursor < len(str(text_node)):
+            replacements.append(str(text_node)[cursor:])
+        for replacement in reversed(replacements):
+            text_node.insert_after(replacement)
+        text_node.extract()
+
+    svg_colors = {
+        "var(--text)": "#2b2926",
+        "var(--text-faint)": "#9a9289",
+        "var(--text-mute)": "#6b6258",
+        "var(--bg)": "#ffffff",
+        "var(--bg-tint)": "#f7f2ea",
+        "var(--border)": "#d8d2c8",
+        "var(--border-strong)": "#b8aea2",
+    }
+    public_asset_dir.mkdir(parents=True, exist_ok=True)
+    for index, svg in enumerate(list(content.find_all("svg")), start=1):
+        if "viewbox" in svg.attrs:
+            svg["viewBox"] = svg.attrs.pop("viewbox")
+        svg_source = str(svg)
+        for variable, color in svg_colors.items():
+            svg_source = svg_source.replace(variable, color)
+        filename = f"figure-{index}.png"
+        output = public_asset_dir / filename
+        wechat_sync.cairosvg.svg2png(
+            bytestring=svg_source.encode("utf-8"),
+            write_to=str(output),
+            output_width=1560,
+            background_color="#ffffff",
+        )
+        image = soup.new_tag("img")
+        image["src"] = urljoin(public_asset_url, filename)
+        image["alt"] = svg.get("aria-label", "article figure")
+        image["style"] = "display:block;max-width:100%;height:auto;margin:20px auto;"
+        image["data-generated-figure"] = "true"
+        svg.replace_with(image)
+        counts["figure"] += 1
+
+    for image in content.select("img"):
+        if image.get("eeimg"):
+            continue
+        if image.attrs.pop("data-generated-figure", None):
+            continue
         source = image.get("src", "")
         if source.startswith("/"):
             image["src"] = urljoin(site_url, source.lstrip("/"))
@@ -72,9 +160,43 @@ def prepare_content(page_path, source_url, site_url, asset_dir):
         if image.get("src"):
             counts["image"] += 1
 
-    # Keep the clipboard payload small and limited to attributes Zhihu can use.
+    for anchor in content.select("a[href]"):
+        href = anchor.get("href", "")
+        if href.startswith("#"):
+            anchor["href"] = f"{source_url}{href}"
+        elif href.startswith("/"):
+            anchor["href"] = urljoin(site_url, href.lstrip("/"))
+        anchor.attrs.pop("target", None)
+        anchor.attrs.pop("rel", None)
+
+    styles = {
+        "article": "font-size:16px;line-height:1.8;color:#242424;",
+        "h2": "margin:30px 0 14px;font-size:22px;line-height:1.45;font-weight:600;",
+        "h3": "margin:24px 0 10px;font-size:19px;line-height:1.45;font-weight:600;",
+        "p": "margin:12px 0;line-height:1.8;",
+        "aside": "margin:16px 0;padding:12px 14px;background:#f6f6f6;color:#646464;border-left:3px solid #8590a6;",
+        "blockquote": "margin:16px 0;padding:8px 14px;background:#f6f6f6;border-left:3px solid #8590a6;",
+        "ul": "margin:12px 0;padding-left:1.5em;list-style-type:disc;",
+        "ol": "margin:12px 0;padding-left:1.5em;list-style-type:decimal;",
+        "li": "margin:6px 0;line-height:1.75;",
+        "table": "width:100%;border-collapse:collapse;margin:16px 0;font-size:14px;",
+        "th": "padding:8px;border:1px solid #d3d3d3;background:#f6f6f6;",
+        "td": "padding:8px;border:1px solid #d3d3d3;",
+        "pre": "overflow-x:auto;margin:14px 0;padding:12px;background:#f6f6f6;font-size:13px;",
+        "code": "font-family:monospace;background:#f6f6f6;padding:1px 3px;",
+        "a": "color:#175199;text-decoration:none;",
+        "img": "display:block;max-width:100%;height:auto;margin:20px auto;",
+        "figure": "margin:20px 0;",
+        "figcaption": "margin:8px 0 0;text-align:center;font-size:13px;line-height:1.55;color:#646464;",
+        "sup": "font-size:11px;vertical-align:super;",
+    }
+    for tag_name, style in styles.items():
+        for tag in content.select(tag_name):
+            if tag_name != "img" or not tag.get("eeimg"):
+                tag["style"] = style
+
     for tag in content.find_all(True):
-        allowed = {"href", "src", "alt", "style", "width", "height", "data-embedded"}
+        allowed = {"href", "src", "alt", "style", "class", "eeimg"}
         tag.attrs = {key: value for key, value in tag.attrs.items() if key in allowed}
     return content, counts
 
@@ -82,8 +204,8 @@ def prepare_content(page_path, source_url, site_url, asset_dir):
 def export_page(title, content, source_url, counts):
     escaped_title = html.escape(title)
     count_text = (
-        f"已准备 {counts['image']} 张正文图片、{counts['formula']} 个公式图片"
-        f"和 {counts['figure']} 张矢量配图。"
+        f"已准备 {counts['formula']} 个知乎原生公式、{counts['image']} 张正文图片"
+        f"和 {counts['figure']} 张公网配图。"
     )
     return f"""<!doctype html>
 <html lang="zh-CN">
@@ -105,7 +227,7 @@ body{{margin:0;background:#f5f5f5;color:#242424;font-family:-apple-system,BlinkM
   <button onclick="copyBody()">复制正文（含图片与公式）</button>
   <button class="secondary" onclick="selectBody()">兼容模式：选中正文</button>
   <span id="status" class="status">{count_text}</span>
-  <p class="note">先复制标题，再复制正文并粘贴到知乎编辑器。粘贴后请等待知乎完成图片上传，再保存草稿；若浏览器阻止一键复制，使用兼容模式后按 Ctrl/Cmd+C。原文：<a href="{html.escape(source_url)}">{html.escape(source_url)}</a></p>
+  <p class="note">先复制标题，再复制正文并粘贴到知乎编辑器。公式会按知乎原生格式写入；图片使用已发布博客的 HTTPS 地址。粘贴后请等待知乎完成图片转存，再保存草稿。若浏览器阻止一键复制，使用兼容模式后按 Ctrl/Cmd+C。原文：<a href="{html.escape(source_url)}">{html.escape(source_url)}</a></p>
 </div></div>
 <main class="sheet"><h1 class="title">{escaped_title}</h1><div id="zhihu-content">{content}</div></main>
 <script>
@@ -154,11 +276,12 @@ def main():
 
     source_url = urljoin(args.site_url, page_path.relative_to(ROOT / "_site").as_posix())
     output_dir = args.output_dir.resolve()
-    asset_dir = output_dir / f"{slug}-assets"
-    shutil.rmtree(asset_dir, ignore_errors=True)
-    asset_dir.mkdir(parents=True, exist_ok=True)
+    public_asset_dir = ROOT / "assets" / "zhihu" / slug
+    public_asset_url = urljoin(args.site_url, f"assets/zhihu/{slug}/")
 
-    content, counts = prepare_content(page_path, source_url, args.site_url, asset_dir)
+    content, counts = prepare_content(
+        page_path, source_url, args.site_url, public_asset_dir, public_asset_url
+    )
     output_dir.mkdir(parents=True, exist_ok=True)
     output = output_dir / f"{slug}.html"
     output.write_text(export_page(str(metadata.get("title", slug)), content, source_url, counts), encoding="utf-8")

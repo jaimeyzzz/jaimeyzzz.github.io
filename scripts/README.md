@@ -39,4 +39,4 @@ python3 scripts/zhihu_export.py
 
 Use `--post _posts/YYYY-MM-DD-slug.md` to select an article. The private preview server also exposes a `知乎复制页` link beside every published article and on its preview page.
 
-The exporter converts block formulas, inline formulas, and inline SVG figures to embedded PNG images. Regular article images use absolute public blog URLs. Copy the title and rich-text body separately, paste them into Zhihu, and wait for Zhihu to finish importing the images before saving the draft.
+The exporter converts block and inline formulas to Zhihu's native equation nodes. Inline SVG figures are rendered to `assets/zhihu/SLUG/` and all article images use absolute public blog URLs, because Zhihu rejects clipboard `data:` images. Commit and deploy newly generated figure assets before copying the article. Copy the title and rich-text body separately, paste them into Zhihu, and wait for Zhihu to finish importing the images before saving the draft.
