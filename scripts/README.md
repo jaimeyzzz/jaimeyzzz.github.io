@@ -29,14 +29,14 @@ Keep this file local and set its permission to `600`. The script builds Jekyll, 
 
 On submission, the script looks up drafts by exact article title: an existing draft is updated, while a new title creates a new draft. Use `--update-media-id MEDIA_ID --submit` only when you need to override automatic matching.
 
-# Zhihu manual publishing
+# Zhihu rich-text export
 
-Generate a private, Zhihu-friendly rich-text copy page for the latest published post:
+Generate a private copy page for the latest published article:
 
 ```bash
 python3 scripts/zhihu_export.py
 ```
 
-Select a specific post with `--post _posts/YYYY-MM-DD-slug.md`. The output is written under the ignored `.preview/zhihu/` directory and is available through the private preview server at `/blog-preview/zhihu/slug.html`. Copy the title first, then use the one-click rich-text body button.
+Use `--post _posts/YYYY-MM-DD-slug.md` to select an article. The private preview server also exposes a `知乎复制页` link beside every published article and on its preview page.
 
-Regular article images use their public blog URLs so Zhihu can import them. Formula images are embedded in the clipboard document. Always confirm every image after pasting; if Zhihu does not import a remote image, download it from the original post and insert it manually.
+The exporter converts block formulas, inline formulas, and inline SVG figures to embedded PNG images. Regular article images use absolute public blog URLs. Copy the title and rich-text body separately, paste them into Zhihu, and wait for Zhihu to finish importing the images before saving the draft.

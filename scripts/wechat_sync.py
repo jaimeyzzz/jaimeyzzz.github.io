@@ -357,6 +357,7 @@ def extract_article(page_path, source_url, formula_directory):
         "var(--text-mute)": "#6b6258",
         "var(--bg)": "#ffffff",
         "var(--bg-tint)": "#f7f2ea",
+        "var(--border)": "#d8d2c8",
         "var(--border-strong)": "#b8aea2",
     }
     for index, svg in enumerate(content.find_all("svg"), start=1):
@@ -370,7 +371,6 @@ def extract_article(page_path, source_url, formula_directory):
             bytestring=svg_source.encode("utf-8"),
             write_to=str(output),
             output_width=1560,
-            output_height=660,
             background_color="#ffffff",
         )
         placeholder = soup.new_tag("img")
