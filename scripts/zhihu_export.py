@@ -76,6 +76,26 @@ def prepare_content(page_path, source_url, site_url, public_asset_dir, public_as
 
     counts = {"formula": 0, "figure": 0, "image": 0}
 
+    # Zhihu recognizes semantic blockquotes, but not the blog's custom aside.
+    for aside in list(content.find_all("aside")):
+        blockquote = soup.new_tag("blockquote")
+        if aside.find(["p", "ul", "ol"], recursive=False):
+            for child in list(aside.contents):
+                blockquote.append(child.extract())
+        else:
+            paragraph = soup.new_tag("p")
+            for child in list(aside.contents):
+                paragraph.append(child.extract())
+            blockquote.append(paragraph)
+        aside.replace_with(blockquote)
+
+    for blockquote in content.find_all("blockquote"):
+        if not blockquote.find(["p", "ul", "ol"], recursive=False):
+            paragraph = soup.new_tag("p")
+            for child in list(blockquote.contents):
+                paragraph.append(child.extract())
+            blockquote.append(paragraph)
+
     for citation in content.select("sup.cite"):
         number = citation.get_text(strip=True)
         replacement = soup.new_tag("sup")
@@ -146,6 +166,18 @@ def prepare_content(page_path, source_url, site_url, public_asset_dir, public_as
         image["data-generated-figure"] = "true"
         svg.replace_with(image)
         counts["figure"] += 1
+
+    # Figure/figcaption are not stable paste targets in Zhihu. Keep the image
+    # and turn the caption into an ordinary emphasized paragraph.
+    for caption in list(content.find_all("figcaption")):
+        paragraph = soup.new_tag("p")
+        emphasis = soup.new_tag("em")
+        for child in list(caption.contents):
+            emphasis.append(child.extract())
+        paragraph.append(emphasis)
+        caption.replace_with(paragraph)
+    for figure in list(content.find_all("figure")):
+        figure.unwrap()
 
     for image in content.select("img"):
         if image.get("eeimg"):
@@ -233,9 +265,10 @@ body{{margin:0;background:#f5f5f5;color:#242424;font-family:-apple-system,BlinkM
 <script>
 const statusNode=document.getElementById('status');
 function setStatus(text){{statusNode.textContent=text}}
+function articleBody(){{return document.querySelector('#zhihu-content > article')||document.getElementById('zhihu-content')}}
 function selectBody(){{
   const selection=window.getSelection(),range=document.createRange();
-  range.selectNodeContents(document.getElementById('zhihu-content'));
+  range.selectNodeContents(articleBody());
   selection.removeAllRanges();selection.addRange(range);
   setStatus('正文已选中，请按 Ctrl/Cmd+C，然后粘贴到知乎。');
 }}
@@ -244,10 +277,11 @@ async function copyTitle(){{
   catch(error){{setStatus('标题复制失败，请手动选择标题。')}}
 }}
 function copyBody(){{
-  const body=document.getElementById('zhihu-content');
+  const body=articleBody();
   const images=[...body.querySelectorAll('img')];
   const clone=body.cloneNode(true);
   [...clone.querySelectorAll('img')].forEach((image,index)=>image.src=images[index].src);
+  [...clone.querySelectorAll('[style]')].forEach(element=>element.removeAttribute('style'));
   const onCopy=event=>{{
     event.clipboardData.setData('text/html',clone.innerHTML);
     event.clipboardData.setData('text/plain',body.innerText);
