@@ -18,7 +18,7 @@ from pathlib import Path
 import cairosvg
 import yaml
 from bs4 import BeautifulSoup
-from PIL import Image, ImageChops, ImageDraw, ImageFont
+from PIL import Image, ImageChops, ImageDraw, ImageFont, ImageOps
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -99,20 +99,32 @@ def generated_path(post):
     return ROOT / "_site" / year / month / day / f"{slug}.html"
 
 
-def trim_image(path, padding=24):
+def trim_image(path, padding=24, transparent=False):
     image = Image.open(path).convert("RGB")
     background = Image.new("RGB", image.size, "white")
     difference = ImageChops.difference(image, background)
     box = difference.getbbox()
     if box:
         image = image.crop(box)
-    canvas = Image.new("RGB", (image.width + padding * 2, image.height + padding * 2), "white")
-    canvas.paste(image, (padding, padding))
+    if transparent:
+        # Turn the white PDF raster background into alpha while retaining the
+        # antialiased edge coverage. A fixed ink color avoids pale halos on
+        # non-white article backgrounds.
+        alpha = ImageOps.invert(ImageOps.grayscale(image))
+        image_with_alpha = Image.new("RGBA", image.size, (43, 41, 38, 0))
+        image_with_alpha.putalpha(alpha)
+        canvas = Image.new(
+            "RGBA", (image.width + padding * 2, image.height + padding * 2), (0, 0, 0, 0)
+        )
+        canvas.alpha_composite(image_with_alpha, (padding, padding))
+    else:
+        canvas = Image.new("RGB", (image.width + padding * 2, image.height + padding * 2), "white")
+        canvas.paste(image, (padding, padding))
     canvas.save(path, optimize=True)
 
 
 def resize_image_height(path, target_height):
-    image = Image.open(path).convert("RGB")
+    image = Image.open(path)
     target_width = max(1, round(image.width * target_height / image.height))
     image = image.resize((target_width, target_height), Image.Resampling.LANCZOS)
     image.save(path, optimize=True)
@@ -225,18 +237,19 @@ def render_formula(source, output, inline=False):
             stdout=subprocess.DEVNULL,
         )
         subprocess.run(
-            ["pdftoppm", "-png", "-r", "180", "-singlefile", "formula.pdf", "formula"],
+            ["pdftoppm", "-png", "-r", "360", "-singlefile", "formula.pdf", "formula"],
             cwd=temporary_path,
             check=True,
             stdout=subprocess.DEVNULL,
         )
         output.parent.mkdir(parents=True, exist_ok=True)
         output.write_bytes((temporary_path / "formula.png").read_bytes())
-    trim_image(output, padding=2 if inline else 24)
+    trim_image(output, padding=3 if inline else 12, transparent=True)
     if inline:
-        # WeChat may discard relative CSS sizing on inline images. Keep the
-        # uploaded bitmap close to the text line height as a safe fallback.
-        return resize_image_height(output, 20)
+        # Keep a 3x bitmap for high-DPI phones while explicitly displaying it
+        # at normal text height in the WeChat HTML.
+        pixel_width, _ = resize_image_height(output, 60)
+        return max(1, round(pixel_width / 3)), 20
     with Image.open(output) as image:
         return image.size
 
@@ -413,7 +426,7 @@ def extract_article(page_path, source_url, formula_directory):
         height = formula.get("height")
         formula["style"] = (
             f"display:inline-block;width:{width}px;height:{height}px;max-width:none;"
-            "margin:0 0.08em;vertical-align:-0.22em;"
+            "margin:0 0.02em;vertical-align:-0.18em;"
         )
 
     for item in content.select("p.wechat-bullet-item"):
